@@ -21,6 +21,23 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'haml', '~> 4.0.5'
+gem 'cancan', '~> 1.6.10'
+gem 'devise', '~> 3.3.0'
+gem 'oauth', '~> 0.4.7'
+gem 'ransack', '~> 1.2.3'
+gem 'rails-ajax'
+gem 'carrierwave'
+
+
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
+  gem 'better_errors'  
+end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
