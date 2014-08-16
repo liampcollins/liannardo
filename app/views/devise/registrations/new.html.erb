@@ -6,7 +6,7 @@
 
 
  <div><%= f.label :name %><br />
-  <%= f.name_field :name %></div>
+  <%= f.text_field :name %></div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
@@ -15,7 +15,7 @@
   <%= f.file_field :image %></div>
 
    <div><%= f.label :bio %><br />
-  <%= f.bio_field :bio %></div>
+  <%= f.text_field :bio %></div>
 
   <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
