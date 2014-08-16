@@ -1,8 +1,16 @@
 
 <h1>CHEERUPS FEED</h1>
 
+<%= search_form_for @p do |p| %>
+  <%= p.label :content_cont %>
+  <%= p.search_field :content_cont %>
+  <%= p.submit %>
+<% end %>
+
+
 <table>
   <tr>
+    
     <th>Content</th>
     <th>Author</th>
     <th>Likes</th>

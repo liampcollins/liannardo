@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :image, :name, :bio
   # attr_accessible :title, :body
 
-  mount_uploader :image, UserImageUploader
+  mount_uploader :image, ImageUploader
 
 
   has_many :posts
