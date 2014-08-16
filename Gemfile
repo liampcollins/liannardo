@@ -26,7 +26,6 @@ gem 'cancan', '~> 1.6.10'
 gem 'devise'
 gem 'oauth', '~> 0.4.7'
 gem 'ransack', '~> 1.2.3'
-gem 'rails-ajax'
 gem 'carrierwave'
 
 
