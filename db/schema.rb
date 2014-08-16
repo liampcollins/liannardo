@@ -11,9 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-#THIS IS TO CHECK WE'RE ON DEVELOP!!
-
-
 ActiveRecord::Schema.define(:version => 20140815155332) do
 
   create_table "posts", :force => true do |t|
