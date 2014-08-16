@@ -17,8 +17,8 @@ class PostsController < ApplicationController
 
   def index
   
-    @f = Post.search(params[:q])
-    @posts = @f.result
+    @p = Post.search(params[:p])
+    @posts = @p.result
 
     respond_to do |format|
       format.html # index.html.erb

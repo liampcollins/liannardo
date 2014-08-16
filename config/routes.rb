@@ -1,5 +1,7 @@
 Liannardo::Application.routes.draw do
   devise_for :users, controllers: {registrations: :registrations, omniauth_callbacks: "omniauth_callbacks"}
+
+  resources :users, only: [:index]
   
   devise_scope :user do
     get "/login", to: "devise/sessions#new"
