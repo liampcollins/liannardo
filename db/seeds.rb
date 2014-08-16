@@ -12,7 +12,7 @@ Post.delete_all
 u1 = User.create!(name: 'Liam', email: 'liamcollins@gmail.com', password:'password', password_confirmation: 'password', image:'https://media.licdn.com/mpr/mpr/wc_200_200/p/4/005/025/0a4/16ff8cb.jpg' , bio:'I am Irish')
 
 u2 = User.create!(name: 'Eduardo', email: 'eduardo@gmail.com', password:'password', password_confirmation: 'password', image:'https://media.licdn.com/mpr/mpr/wc_200_200/p/5/005/062/2f7/3ad9914.jpg' , bio:'I have a cute kitten')
-u2 = User.create!(name: 'Johanna', email: 'johanna@gmail.com', password:'password', password_confirmation: 'password', image:'https://media.licdn.com/mpr/mpr/wc_200_200/p/1/005/03c/3a6/18912f3.jpg' , bio:'purely awesome')
+u3 = User.create!(name: 'Johanna', email: 'johanna@gmail.com', password:'password', password_confirmation: 'password', image:'https://media.licdn.com/mpr/mpr/wc_200_200/p/1/005/03c/3a6/18912f3.jpg' , bio:'purely awesome')
 
 p1 = Post.create!(content: 'I like boats')
 p2 = Post.create!(content: 'I hate cats')
