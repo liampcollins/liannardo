@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140816130759) do
+ActiveRecord::Schema.define(:version => 20140816171000) do
 
   create_table "posts", :force => true do |t|
     t.string   "content"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20140816130759) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
+    t.text     "facebook_token"
+    t.text     "google_oauth2_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

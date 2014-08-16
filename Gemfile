@@ -28,7 +28,7 @@ gem 'oauth', '~> 0.4.7'
 gem 'ransack', '~> 1.2.3'
 gem 'carrierwave'
 gem 'omniauth-google-oauth2'
-
+gem 'omniauth-facebook'
 
 
 group :development, :test do
