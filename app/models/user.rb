@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :image, :name, :bio
@@ -14,9 +14,43 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :votes
   has_and_belongs_to_many(:users,
-      :join_table => "relationships",
-      :foreign_key => "publisher_id",
-      :association_foreign_key => "follower_id")
+    :join_table => "relationships",
+    :foreign_key => "publisher_id",
+    :association_foreign_key => "follower_id")
 
 
+  def self.find_for_google_oauth2(auth, signed_in_user=nil) 
+
+    # Existing user
+    if user = signed_in_user || User.find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.image = auth.info.image
+      user.save
+      user
+    else
+      # New user
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.name = auth.info.name
+        user.image = auth.info.image
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.skip_confirmation!
+      end
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if auth = session["devise.google_data"]
+        user.name = auth.info.name
+        user.email = auth.info.email
+        user.image = auth.info.image
+        user.skip_confirmation!
+      end 
+    end
+  end
 end

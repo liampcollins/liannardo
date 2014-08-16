@@ -50,7 +50,7 @@ v18=Vote.create!(sentiment: false)
 
 
 p1.votes << [v1, v2, v10]
-p2.votes <<[v3, v11 ]
+p2.votes <<[v3, v11]
 p3.votes << [v4, v12]
 p4.votes <<[v5, v13, v14]
 p5.votes << [v6, v15, v16, v17]
