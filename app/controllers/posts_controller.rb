@@ -1,10 +1,24 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
 
-  # GET /posts
+# GET /posts
   # GET /posts.json
+  # def index
+  #   @posts = Post.all
+
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @posts }
+  #   end
+  # end
+
+  # GET /posts/1
+  # GET /posts/1.json
+
   def index
-    @posts = Post.all
+  
+    @p = Post.search(params[:p])
+    @posts = @p.result
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,8 +26,9 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
+
+
+
   def show
     @post = Post.find(params[:id])
 
@@ -36,7 +51,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+
     @post = Post.find(params[:id])
+
+
   end
 
   # POST /posts
@@ -59,6 +77,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

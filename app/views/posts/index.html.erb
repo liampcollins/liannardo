@@ -1,20 +1,53 @@
-<h1>Listing posts</h1>
+
+<h1>CHEERUPS FEED</h1>
+
+<%= search_form_for @p do |p| %>
+  <%= p.label :content_cont %>
+  <%= p.search_field :content_cont %>
+  <%= p.submit %>
+<% end %>
+
 
 <table>
   <tr>
+    
     <th>Content</th>
+    <th>Author</th>
+    <th>Likes</th>
+    <th>Hates</th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.content %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <% likes = post.votes.all.map do |vote| %>
+  <% vote.sentiment if vote.sentiment == true %>
+  <% end %>
+  <% likes.delete(nil)%>
+  <% hates = post.votes.all.map do |vote| %>
+  <% vote.sentiment if vote.sentiment == false %>
+  <% end %>
+  <% hates.delete(nil)%>
+
+
+  <% current_user.users.each do |user| %>
+    <% if post.user_id == user.id%>
+      <tr>
+        <td><%= post.content %></td>
+        <td><%= post.user.name %></td>
+        <td><%= likes.length %></td>
+        <td><%= hates.length %></td>
+        <td class="id" style="visibility:hidden;"><%= post.id %></td>
+        <td><button class = "like">Like</button></td>
+        <td><button class = "hate">Hate</button></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <% end %>
 <% end %>
 </table>
 
