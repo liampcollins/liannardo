@@ -19,26 +19,23 @@ class User < ActiveRecord::Base
     :association_foreign_key => "follower_id")
 
 
-  def self.find_for_google_oauth2(auth, signed_in_user=nil) 
-
-    # Existing user
+  def self.find_for_google_oauth2(auth, signed_in_user=nil)
     if user = signed_in_user || User.find_by_email(auth.info.email)
       user.provider = auth.provider
       user.uid = auth.uid
-      user.name = auth.info.name
-      user.image = auth.info.image
+      user.name = auth.info.name if user.name.blank?
+      user.image = auth.info.image if user.image.blank?
       user.save
       user
     else
-      # New user
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.name = auth.info.name
-        user.image = auth.info.image
         user.email = auth.info.email
+        user.image = auth.info.image
         user.password = Devise.friendly_token[0,20]
-        user.skip_confirmation!
+
       end
     end
   end
@@ -49,7 +46,6 @@ class User < ActiveRecord::Base
         user.name = auth.info.name
         user.email = auth.info.email
         user.image = auth.info.image
-        user.skip_confirmation!
       end 
     end
   end
