@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :image, :name, :bio
   # attr_accessible :title, :body
+  mount_uploader :image, ImageUploader
 
   has_many :posts
   has_many :votes
@@ -14,5 +15,6 @@ class User < ActiveRecord::Base
       :join_table => "relationships",
       :foreign_key => "publisher_id",
       :association_foreign_key => "follower_id")
+
 
 end
