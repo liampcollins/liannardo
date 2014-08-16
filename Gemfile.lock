@@ -155,7 +155,7 @@ DEPENDENCIES
   cancan (~> 1.6.10)
   carrierwave
   coffee-rails (~> 3.2.1)
-  devise (~> 3.3.0)
+  devise
   haml (~> 4.0.5)
   jquery-rails
   oauth (~> 0.4.7)

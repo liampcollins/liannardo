@@ -23,7 +23,7 @@ end
 gem 'jquery-rails'
 gem 'haml', '~> 4.0.5'
 gem 'cancan', '~> 1.6.10'
-gem 'devise', '~> 3.3.0'
+gem 'devise'
 gem 'oauth', '~> 0.4.7'
 gem 'ransack', '~> 1.2.3'
 gem 'rails-ajax'
