@@ -24,8 +24,6 @@ p6 = Post.create!(content: 'need coffee')
 u1.posts << [p1, p2]
 u2.posts << [p3, p4]
 u3.posts << [p5, p6]
-
-
 u1.users << [u2, u3]
 u2.users << [u1, u3]
 u3.users << [u2, u1]
