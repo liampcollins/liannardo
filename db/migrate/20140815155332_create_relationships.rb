@@ -4,7 +4,7 @@ class CreateRelationships < ActiveRecord::Migration
       t.integer :follower_id, null: false
       t.integer :publisher_id, null: false
 
-      t.timestamps
+      t.timestamps :null => true
     end
   end
 end
