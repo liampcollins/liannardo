@@ -28,8 +28,13 @@ class PostsController < ApplicationController
 
 
   def index
+
     @q = Post.search(params[:q])
     @posts = @q.result(distinct: true)
+
+    # @p = User.search(params[:p])
+    # @users = @p.result(distinct: true)
+
 
     respond_to do |format|
       format.html # index.html.erb
