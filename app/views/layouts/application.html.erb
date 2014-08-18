@@ -10,7 +10,10 @@
   <% if current_user %>
       <%= current_user.email %>
       <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+      <%= link_to 'View Feed', posts_path  %>
+
       <img id="image" src="<%= current_user.profile_picture %>" />
+      
     <% else %>
       <%= link_to 'sign in', new_user_session_path %>
       <%= link_to 'sign up', new_user_registration_path %>

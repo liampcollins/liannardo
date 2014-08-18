@@ -40,7 +40,7 @@
   <% end %>
   <% hates.delete(nil)%>
 
-
+  
   <% current_user.users.each do |user| %>
     <% if post.user_id == user.id%>
       <tr>
@@ -49,8 +49,30 @@
         <td><%= likes.length %></td>
         <td><%= hates.length %></td>
         <td class="id" style="visibility:hidden;"><%= post.id %></td>
-        <td><button class = "like">Like</button></td>
-        <td><button class = "hate">Hate</button></td>
+
+        <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
+        <!-- Getting votres made by current user on this post -->
+        <%vote = post.votes.select do |vote| %>
+          <% if vote.user_id == current_user.id %>  
+          <% vote %>
+          <% end %>
+        <% end %>
+        <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
+        <% if vote.length ==1 %>
+          <% sentiment = vote.first.sentiment %>
+          <% if sentiment == true %>
+            <% starting_liked_status = "liked_status"%>
+          <% else sentiment == false %>
+            <% starting_liked_status = "hated_status"%>
+          <% end %>
+        <% elsif vote.length ==2%>
+          <% starting_liked_status = "liked_status hated_status"%>
+        <% end %>
+
+
+
+        <td><button class = "<%= starting_liked_status %> unchecked_status like">Like</button></td>
+        <td><button class = "unchecked_status hate">Hate</button></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

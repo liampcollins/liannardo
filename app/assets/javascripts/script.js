@@ -7,24 +7,41 @@ function request(method, url, data){
   })
 }
 
+// function listPosts(data) {
+  
+// }
 
 
-function addLike(){
+
+
+function toggleLike(){
   console.log("like")
+  $this = $(this)
+  $post = $this.parent().parent()
+  id = parseInt($post.children('.id').html())
+  request("POST", "/votes", {vote:{sentiment: true, post_id: id}}).success(console.log("success")).success(function(){
+    $this.toggleClass("liked_status")
+  })
 }
 
 
-function addHate(){
+function toggleHate(){
   console.log("hate")
   $this = $(this)
   $post = $this.parent().parent()
   id = parseInt($post.children('.id').html())
-  request("POST", "/votes", {vote:{sentiment: false post_id: id user_id: current_user.id}}).success(console.log("success"))
-  
+  request("POST", "/votes", {vote:{sentiment: false, post_id: id}}).success(console.log("success")).success(function(){
+    $this.toggleClass("hated_status")
+  })
 }
-
-
+  
 $(function(){
-  $('.like').on('click', addLike);
-  $(".hate").on('click', addHate);
+  $('.like').on('click', toggleLike);
+  $(".hate").on('click', toggleHate);
 })
+
+
+
+
+
+

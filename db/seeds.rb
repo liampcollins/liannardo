@@ -57,8 +57,9 @@ p5.votes << [v6, v15, v16, v17]
 p6.votes << [v7, v8, v9, v18]
 
 
-
-
+u1.votes << [v4, v5, ]
+u2.votes <<[v1, v2, v3, v6, v7, v8, v9]
+u3.votes << [v10, v11, v12, v13, v14]
 
 
 

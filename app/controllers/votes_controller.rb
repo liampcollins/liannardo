@@ -41,17 +41,25 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new(params[:vote])
-    
-binding.pry
+    @vote.user_id = current_user.id
 
+    vote_exist = Vote.all.select do |vote|
+      if vote.user_id == @vote.user_id
+        if vote.post_id == @vote.post_id
+          if vote.sentiment == @vote.sentiment
+          vote
+          end
+        end  
+      end  
+    end 
+    if vote_exist.length >0
+      Vote.destroy(vote_exist.first.id)
+    else
+      @vote.save
+    end
     respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render json: @vote, status: :created, location: @vote }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @votes}
+      format.json { render json: @votes}
     end
   end
 
