@@ -14,9 +14,6 @@
 
 
 
-
-
-
 <table>
   <tr>
     
@@ -45,7 +42,7 @@
     <% if post.user_id == user.id%>
       <tr>
         <td><%= post.content %></td>
-        <td><%= post.user.name %></td>
+        <td><%= link_to post.user.name, member_path(user) %></td>
         <td class="likes"><%= likes.length %></td>
         <td class="hates"><%= hates.length %></td>
         <td class="id" style="visibility:hidden;"><%= post.id %></td>
