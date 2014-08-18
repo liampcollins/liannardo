@@ -20,16 +20,17 @@ class User < ActiveRecord::Base
 
 
   def self.from_omniauth(auth, signed_in_user=nil)
+    
     if user = signed_in_user || User.find_by_email(auth.info.email)
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name if user.name.blank?
       user.image = auth.info.image if user.image.blank?
       user.save
-      user
         if auth.provider == "facebook"
           user.facebook_token = auth.credentials.token
         end
+      user
     else
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider

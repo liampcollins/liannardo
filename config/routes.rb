@@ -10,7 +10,7 @@ Liannardo::Application.routes.draw do
 
 
   resources :posts
-  resources :users
+
   # get 'apicalls/facebook', to:  'apicalls#facebook', as: 'facebook_api'
   get 'apicalls/facebook_auth', to:  'apicalls#facebook_auth', as: 'facebook_auth'
 
