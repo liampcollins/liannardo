@@ -46,8 +46,8 @@
       <tr>
         <td><%= post.content %></td>
         <td><%= post.user.name %></td>
-        <td><%= likes.length %></td>
-        <td><%= hates.length %></td>
+        <td class="likes"><%= likes.length %></td>
+        <td class="hates"><%= hates.length %></td>
         <td class="id" style="visibility:hidden;"><%= post.id %></td>
 
         <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
@@ -62,17 +62,23 @@
           <% sentiment = vote.first.sentiment %>
           <% if sentiment == true %>
             <% starting_liked_status = "liked_status"%>
+            <% starting_hated_status = "unchecked_status"%>
           <% else sentiment == false %>
-            <% starting_liked_status = "hated_status"%>
-          <% end %>
+          <% starting_liked_status = "unchecked_status"%>
+          <% starting_hated_status = "hated_status"%>
+        <% end %>
         <% elsif vote.length ==2%>
-          <% starting_liked_status = "liked_status hated_status"%>
+          <% starting_liked_status = "liked_status"%>
+          <% starting_hated_status = "hated_status"%>
+        <% else %>
+          <% starting_liked_status = "unchecked_status"%>
+          <% starting_hated_status = "unchecked_status"%>
         <% end %>
 
 
 
-        <td><button class = "<%= starting_liked_status %> unchecked_status like">Like</button></td>
-        <td><button class = "unchecked_status hate">Hate</button></td>
+        <td><button class = "<%= starting_liked_status %> like">Like</button></td>
+        <td><button class = "<%= starting_hated_status %> hate">Hate</button></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -81,7 +87,6 @@
   <% end %>
 <% end %>
 </table>
-
 <br />
 
 <%= link_to 'New Post', new_post_path %>
