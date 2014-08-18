@@ -15,18 +15,28 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
 
-  def index
+  # def index
   
-    @p = Post.search(params[:p])
-    @posts = @p.result
+  #   @q = Post.search(params[:p])
+  #   @posts = @q.result
+
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @posts }
+  #   end
+  # end
+
+
+  def index
+    @q = Post.search(params[:q])
+    @posts = @q.result(distinct: true)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
     end
+    # @q.build_condition
   end
-
-
 
 
   def show
