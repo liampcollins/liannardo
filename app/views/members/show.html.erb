@@ -1,4 +1,10 @@
+
+
+
+
 <h1>Members#show</h1>
+
+
 
 <p id="notice"><%= notice %></p>
 
@@ -6,6 +12,79 @@
   <b>Content:</b>
   <%= @user.name %>
 </p>
+
+
+<table>
+  <tr>
+    
+    <th>Content</th>
+    <th>Author</th>
+    <th>Likes</th>
+    <th>Hates</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @user.posts.each do |post| %>
+
+    <!-- MOVE TO HELPER -->
+    <% likes = post.votes.all.map do |vote| %>
+      <% vote.sentiment if vote.sentiment == true %>
+    <% end %>
+    <% likes.delete(nil)%>
+    <% hates = post.votes.all.map do |vote| %>
+      <% vote.sentiment if vote.sentiment == false %>
+    <% end %>
+    <% hates.delete(nil)%>
+      <!-- MOVE TO HELPER -->
+
+
+    <tr>
+      <td><%= post.content %></td>
+      <td><%= link_to @user.name, member_path(@user) %></td>
+      <td class="likes"><%= likes.length %></td>
+      <td class="hates"><%= hates.length %></td>
+      <td class="id" style="visibility:hidden;"><%= post.id %></td>
+
+      <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
+      <!-- Getting votes made by current user on this post -->
+      <%vote = post.votes.select do |vote| %>
+        <% if vote.user_id == current_user.id %>  
+        <% vote %>
+        <% end %>
+      <% end %>
+      <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
+      <% if vote.length ==1 %>
+        <% sentiment = vote.first.sentiment %>
+        <% if sentiment == true %>
+          <% starting_liked_status = "liked_status"%>
+          <% starting_hated_status = "unchecked_status"%>
+        <% else sentiment == false %>
+        <% starting_liked_status = "unchecked_status"%>
+        <% starting_hated_status = "hated_status"%>
+        <% end %>
+      <% elsif vote.length ==2%>
+        <% starting_liked_status = "liked_status"%>
+        <% starting_hated_status = "hated_status"%>
+      <% else %>
+        <% starting_liked_status = "unchecked_status"%>
+        <% starting_hated_status = "unchecked_status"%>
+      <% end %>
+      <td><button class = "<%= starting_liked_status %> like">Like</button></td>
+      <td><button class = "<%= starting_hated_status %> hate">Hate</button></td>
+      <td><button class = "repost">Repost</button></td>
+
+      <td><%= link_to 'Show', post %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>    
+  <% end %>
+</table>
+<br />
+
+  <%= link_to 'New Post', new_post_path %>
 
 
 <%= link_to 'Edit', edit_member_path(@user) %> |
