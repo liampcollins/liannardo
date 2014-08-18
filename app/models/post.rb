@@ -4,7 +4,5 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :votes
 
-  # def self.search(query)
-  #   where("content like ?", "%#{query}%") 
-  # end
+
 end
