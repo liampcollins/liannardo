@@ -1,11 +1,17 @@
 
 <h1>CHEERUPS FEED</h1>
 
-<%= search_form_for @p do |p| %>
-  <%= p.label :content_cont %>
-  <%= p.search_field :content_cont %>
-  <%= p.submit %>
+
+<%= search_form_for @q do |f| %>
+  <p>
+    <%= f.label :content_cont %>
+    <%= f.text_field :content_cont %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
+
 
 
 <table>
@@ -31,35 +37,39 @@
   <% end %>
   <% hates.delete(nil)%>
 
-
+  
   <% current_user.users.each do |user| %>
     <% if post.user_id == user.id%>
       <tr>
         <td><%= post.content %></td>
-        <td><%= post.user.name %></td>
-        <td><%= likes.length %></td>
-        <td><%= hates.length %></td>
+        <td><%= link_to post.user.name, member_path(user) %></td>
+        <td class="likes"><%= likes.length %></td>
+        <td class="hates"><%= hates.length %></td>
         <td class="id" style="visibility:hidden;"><%= post.id %></td>
-        
+
+        <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
         <!-- Getting votres made by current user on this post -->
         <%vote = post.votes.select do |vote| %>
           <% if vote.user_id == current_user.id %>  
           <% vote %>
           <% end %>
         <% end %>
-<!--         Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
+        <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
         <% if vote.length ==1 %>
           <% sentiment = vote.first.sentiment %>
           <% if sentiment == true %>
             <% starting_liked_status = "liked_status"%>
             <% starting_hated_status = "unchecked_status"%>
           <% else sentiment == false %>
-            <% starting_liked_status = "unchecked_status"%>
-            <% starting_hated_status = "hated_status"%>
+          <% starting_liked_status = "unchecked_status"%>
+          <% starting_hated_status = "hated_status"%>
           <% end %>
         <% elsif vote.length ==2%>
           <% starting_liked_status = "liked_status"%>
           <% starting_hated_status = "hated_status"%>
+        <% else %>
+          <% starting_liked_status = "unchecked_status"%>
+          <% starting_hated_status = "unchecked_status"%>
         <% end %>
 
         <td><button class = "<%= starting_liked_status %> like">Like</button></td>
@@ -72,7 +82,6 @@
   <% end %>
 <% end %>
 </table>
-
 <br />
 
 <%= link_to 'New Post', new_post_path %>

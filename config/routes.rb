@@ -1,4 +1,12 @@
 Liannardo::Application.routes.draw do
+  get "members/index"
+
+  get "members/show"
+
+  get "members/edit"
+
+  get "members/update"
+
   devise_for :users, controllers: {registrations: :registrations, omniauth_callbacks: "omniauth_callbacks"}
 
   resources :users, only: [:index]
@@ -10,6 +18,10 @@ Liannardo::Application.routes.draw do
 
 
   resources :posts
+  resources :members
+
+  # get 'apicalls/facebook', to:  'apicalls#facebook', as: 'facebook_api'
+  get 'apicalls/facebook_auth', to:  'apicalls#facebook_auth', as: 'facebook_auth'
 
 
   # devise_for :users

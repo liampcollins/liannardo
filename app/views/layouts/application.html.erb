@@ -11,13 +11,15 @@
       <%= current_user.email %>
       <%= link_to 'logout', destroy_user_session_path, method: :delete %>
       <%= link_to 'View Feed', posts_path  %>
+      <%= link_to 'View Members', members_path  %>
 
-      <img id="image" src="<%= current_user.image %>" />
+      <img id="image" src="<%= current_user.profile_picture %>" />
       
     <% else %>
       <%= link_to 'sign in', new_user_session_path %>
       <%= link_to 'sign up', new_user_registration_path %>
       <%= link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2)%>
+      <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook)%>
 
     <% end %>
 
