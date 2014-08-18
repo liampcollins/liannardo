@@ -35,31 +35,17 @@ v3=Vote.create!(sentiment: true)
 v4=Vote.create!(sentiment: true)
 v5=Vote.create!(sentiment: false)
 v6=Vote.create!(sentiment: true)
-v7=Vote.create!(sentiment: true)
-v8=Vote.create!(sentiment: true)
-v9=Vote.create!(sentiment: false)
-v10=Vote.create!(sentiment: true)
-v11=Vote.create!(sentiment: false)
-v12=Vote.create!(sentiment: true)
-v13=Vote.create!(sentiment: true)
-v14=Vote.create!(sentiment: false)
-v15=Vote.create!(sentiment: true)
-v16=Vote.create!(sentiment: true)
-v17=Vote.create!(sentiment: true)
-v18=Vote.create!(sentiment: false)
 
 
-p1.votes << [v1, v2, v10]
-p2.votes <<[v3, v11]
-p3.votes << [v4, v12]
-p4.votes <<[v5, v13, v14]
-p5.votes << [v6, v15, v16, v17]
-p6.votes << [v7, v8, v9, v18]
+p1.votes << [v1, v2]
+p2.votes <<[v3]
+p3.votes << [v4]
+p4.votes <<[v5]
+p5.votes << [v6]
 
 
-u1.votes << [v4, v5, ]
-u2.votes <<[v1, v2, v3, v6, v7, v8, v9]
-u3.votes << [v10, v11, v12, v13, v14]
+u1.votes << [v4, v5]
+u2.votes <<[v1, v2, v3, v6]
 
 
 
