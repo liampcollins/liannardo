@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :image, :name, :bio, :uid, :provider, :facebook_token, :google_oauth2_token
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :image, :name, :bio, :uid, :provider, :facebook_token, :google_oauth2_token, :profile_picture
   # attr_accessible :title, :body
 
   mount_uploader :image, ImageUploader
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name if user.name.blank?
-      user.image = auth.info.image if user.image.blank?
+      user.profile_picture = auth.info.image if user.image.blank?
       user.save
         if auth.provider == "facebook"
           user.facebook_token = auth.credentials.token
@@ -33,24 +33,27 @@ class User < ActiveRecord::Base
       user
     else
       where(auth.slice(:provider, :uid)).first_or_create do |user|
+    
         user.provider = auth.provider
         user.uid = auth.uid
         user.name = auth.info.name
         user.email = auth.info.email
-        user.image = auth.info.image
+        user.profile_picture = auth.info.profile_picture
         user.password = Devise.friendly_token[0,20]
         user.facebook_token = auth.credentials.token
 
       end
     end
+    
   end
 
   def self.new_with_session(params, session)
     super.tap do |user|
       if auth = session["devise.google_data"]
+        raise
         user.name = auth.info.name
         user.email = auth.info.email
-        user.image = auth.info.image
+        user.profile_picture = auth.info.image
       end 
     end
   end
