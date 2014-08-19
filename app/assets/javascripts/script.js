@@ -51,15 +51,15 @@ function toggleHate(){
 }
 
 
-function rePost(){
-  console.log("respost")
-  $this = $(this)
-  $post = $this.parent().parent()
+// function rePost(){
+//   console.log("respost")
+//   $this = $(this)
+//   $post = $this.parent().parent()
 
 // get post details (publisher, content, likes, hates)
 // append to the top of the list of your tweets on your profile page
 //If your followers don't follow publisher post to their timelines too
-}
+// }
   
 $(function(){
   $('.like').on('click', toggleLike);
