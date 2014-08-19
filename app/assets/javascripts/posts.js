@@ -5,7 +5,8 @@ function appendNewPost($post){
 }
 
 
-function postForm(){
+function postForm(e){
+  e.preventDefault()
   console.log("postForm")
   $this = $(this)
   $post = $this.parent()

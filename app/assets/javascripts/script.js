@@ -54,9 +54,15 @@ function toggleHate(){
 
 function updateFollow(){
   console.log("hello world")
-  $('.follow').toggleClass('following').text("following")
-
+  $('.follow').toggleClass('following')
+    if ($('.follow').text() == "Follow") {
+      $('.follow').text("Following")
+    }else{
+      $('.follow').text("Follow")
+    }
 }
+
+
 
 function toggleFollow(){
   $this = $(this)
