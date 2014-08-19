@@ -1,5 +1,5 @@
 
-
+<p id="notice"><%= notice %></p>
 
 
 <h1><%= @user.name %>'s Profile</h1>
@@ -17,7 +17,7 @@
 <div class="following_user"><%= @user.id %></div>
 
 
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <b>Content:</b>
@@ -29,14 +29,13 @@
 </p>
 
 
-
 <table>
   <tr>
     
     <th>Content</th>
     <th>Author</th>
-    <th>Likes</th>
-    <th>Hates</th>
+    <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
+    <th><span class="glyphicon glyphicon-thumbs-down"></th>
     <th></th>
     <th></th>
     <th></th>
@@ -90,8 +89,8 @@
         <% starting_liked_status = "unchecked_status"%>
         <% starting_hated_status = "unchecked_status"%>
       <% end %>
-      <td><button class = "<%= starting_liked_status %> like">Like</button></td>
-      <td><button class = "<%= starting_hated_status %> hate">Hate</button></td>
+      <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
+      <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></td>
       <td><button class = "repost">Repost</button></td>
 
       <td><%= link_to 'Show', post %></td>

@@ -19,8 +19,8 @@
     
     <th>Content</th>
     <th>Author</th>
-    <th>Likes</th>
-    <th>Hates</th>
+    <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
+    <th><span class="glyphicon glyphicon-thumbs-down"></th>
     <th></th>
     <th></th>
     <th></th>
@@ -93,11 +93,11 @@
         <% end %>
 
 
-
-        <td><button class = "<%= starting_liked_status %> like">Like</button></td>
-        <td><button class = "<%= starting_hated_status %> hate">Hate</button></td>
+        
+        <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
+        <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></td>
         <td><button class = "repost">Repost</button></td>
-
+        
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
