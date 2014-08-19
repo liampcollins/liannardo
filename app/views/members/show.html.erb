@@ -8,9 +8,13 @@
   <% else %>
     <img id="image" src="<%= @user.profile_picture %>" />
 <% end%>
-<br/>
-<td><button class="follow">Follow</button></td>
 
+
+<br/>
+<button class="follow">Follow</button>
+
+  
+<div class="following_user"><%= @user.id %></div>
 
 
 <p id="notice"><%= notice %></p>
@@ -59,6 +63,8 @@
       <td class="likes"><%= likes.length %></td>
       <td class="hates"><%= hates.length %></td>
       <td class="id" style="visibility:hidden;"><%= post.id %></td>
+
+
 
       <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
       <!-- Getting votes made by current user on this post -->

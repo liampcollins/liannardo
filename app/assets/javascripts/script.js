@@ -3,7 +3,7 @@ function request(method, url, data){
     method: method,
     url: url,
     dataType: "json",
-    data: data,
+    data: data
   })
 }
 
@@ -52,10 +52,18 @@ function toggleHate(){
   })
 }
 
+function updateFollow(){
+  console.log("hello world")
+  $('.follow').toggleClass('following').text("following")
+
+}
+
 function toggleFollow(){
   $this = $(this)
-  $this.toggleClass("following")
+  $user_id = parseInt($(this).next().text())
+  data={user_id : $user_id}
 
+  request("PUT", "/members/"+ $user_id, data).success(updateFollow())
 }
 
 
@@ -75,7 +83,7 @@ $(function(){
   $(".hate").on('click', toggleHate);
   //$(".repost").on('click', rePost);
   $(".follow").on('click', toggleFollow);
-  $('button').tooltip();
+  //$('button').tooltip();
 })
 
 
