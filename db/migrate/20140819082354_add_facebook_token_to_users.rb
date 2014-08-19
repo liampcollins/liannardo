@@ -4,3 +4,5 @@ class AddFacebookTokenToUsers < ActiveRecord::Migration
     add_column :users, :google_oauth2_token, :text
   end
 end
+
+
