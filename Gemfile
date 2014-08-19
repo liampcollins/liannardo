@@ -29,6 +29,7 @@ gem 'ransack', '~> 1.2.3'
 gem 'carrierwave'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
 
 
 group :development, :test do
