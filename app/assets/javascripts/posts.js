@@ -1,7 +1,14 @@
 
+function rePost(){
+  console.log("respost")
+  $this = $(this)
+  $post = $this.parent().parent()
 
-function appendNewPost($post){
-
+  id = parseInt($post.children('.id').html())
+  request("POST", "/posts", {post:{repost_id: id}}).success(console.log("success"))
+// get post id,save along with new post id in posts db
+// append to the top of the list of your tweets on your profile page
+// If your followers don't follow publisher post to their timelines too
 }
 
 
@@ -19,4 +26,6 @@ function postForm(e){
 
 $(document).ready(function() {
     $('#myModal .btn-primary').on("click", postForm);
+    $(".repost").on('click', rePost);
+
 });

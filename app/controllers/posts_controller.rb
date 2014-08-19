@@ -74,8 +74,13 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
-    @post.user_id = current_user.id
+    if params[:post][:repost_id]
+      @post = Post.new(params[:post])
+      @post.user_id = current_user.id
+    else
+      @post = Post.new(params[:post])
+      @post.user_id = current_user.id
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
