@@ -27,7 +27,26 @@
     <th></th>
     <th></th>
   </tr>
+  
+<!-- MOVE TO HELPER -->
+<% current_user_present = current_user.users.select do |user| %>
+  <% if user.id == current_user.id %>
+    <% user %>
+  <% end %>
+<% end %>
+<% if current_user_present.length > 0%>
+  <% current_user_and_followers = current_user.users  %>
+<% else %>
+  <% current_user_and_followers = current_user.users.push(current_user)  %>
+<% end %>
+<!-- MOVE TO HELPER -->
+
+
+
 <% @posts.each do |post| %>
+  
+
+<!-- MOVE TO HELPER -->
   <% likes = post.votes.all.map do |vote| %>
   <% vote.sentiment if vote.sentiment == true %>
   <% end %>
@@ -36,9 +55,10 @@
   <% vote.sentiment if vote.sentiment == false %>
   <% end %>
   <% hates.delete(nil)%>
+  <!-- MOVE TO HELPER -->
 
-  
-  <% current_user.users.each do |user| %>
+
+  <% current_user_and_followers.each do |user| %>
     <% if post.user_id == user.id%>
       <tr>
         <td><%= post.content %></td>
@@ -48,7 +68,7 @@
         <td class="id" style="visibility:hidden;"><%= post.id %></td>
 
         <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
-        <!-- Getting votres made by current user on this post -->
+        <!-- Getting votes made by current user on this post -->
         <%vote = post.votes.select do |vote| %>
           <% if vote.user_id == current_user.id %>  
           <% vote %>
@@ -76,6 +96,8 @@
 
         <td><button class = "<%= starting_liked_status %> like">Like</button></td>
         <td><button class = "<%= starting_hated_status %> hate">Hate</button></td>
+        <td><button class = "repost">Repost</button></td>
+
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
