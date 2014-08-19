@@ -13,8 +13,12 @@
       <%= link_to 'View Feed', posts_path  %>
       <%= link_to 'View Members', members_path  %>
 
-      <img id="image" src="<%= current_user.profile_picture %>" />
-      <img id="image" src="<%= current_user.image %>" />
+
+      <% if current_user.profile_picture == nil %>
+          <img id="image" src="<%= current_user.image %>" />
+        <% else %>
+          <img id="image" src="<%= current_user.profile_picture %>" />
+      <% end%>
       
     
       
