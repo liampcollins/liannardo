@@ -38,17 +38,26 @@ function toggleLike(){
 }
 
 
+
+
 function toggleHate(){
-  console.log("hate")
   $this = $(this)
   $post = $this.parent().parent()
   id = parseInt($post.children('.id').html())
-  request("POST", "/votes", {vote:{sentiment: false, post_id: id}}).success(console.log("success")).success(function(){
+  request("POST", "/votes", {vote:{sentiment: false, post_id: id}}).success(function(){
+    console.log("success")
     $this.toggleClass("hated_status").toggleClass("unchecked_status")
   }).success(function(){
     updateHates($this, $post)
   })
 }
+
+function toggleFollow(){
+  $this = $(this)
+  $this.toggleClass("following")
+
+}
+
 
 
 // function rePost(){
@@ -64,12 +73,8 @@ function toggleHate(){
 $(function(){
   $('.like').on('click', toggleLike);
   $(".hate").on('click', toggleHate);
-  $(".repost").on('click', rePost);
-
-})
-
-
-$(document).ready(function(){
+  //$(".repost").on('click', rePost);
+  $(".follow").on('click', toggleFollow);
   $('button').tooltip();
 })
 
