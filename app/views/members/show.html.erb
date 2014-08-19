@@ -2,7 +2,13 @@
 
 
 
-<h1>Members#show</h1>
+<h1><%= @user.name %>'s Profile</h1>
+<% if @user.profile_picture == nil %>
+    <img id="image" src="<%= @user.image %>" />
+  <% else %>
+    <img id="image" src="<%= @user.profile_picture %>" />
+<% end%>
+
 
 
 
@@ -11,6 +17,10 @@
 <p>
   <b>Content:</b>
   <%= @user.name %>
+</p>
+<p>
+  <b>About Me:</b>
+  <%= @user.bio%>
 </p>
 
 
