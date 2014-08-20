@@ -1,7 +1,22 @@
+function updateReposts(button, post){
+  console.log("button")
+  if($(button).hasClass("reposted")){
+    post.children('.reposts').html(parseInt(post.children('.reposts').html()) +1)
+  }else{
+    post.children('.reposts').html(parseInt(post.children('.reposts').html()) -1)
+  }
+}
 
-
-function appendNewPost($post){
-
+function rePost(){
+  console.log("respost")
+  $this = $(this)
+  $post = $this.parent().parent()
+  id = parseInt($post.children('.id').html())
+  request("POST", "/posts", {post:{repost_id: id}}).success(console.log("success")).success(function(){
+    $this.toggleClass("not_reposted").toggleClass("reposted")
+    }).success(function(){
+      updateReposts($this, $post)
+  })
 }
 
 
@@ -19,4 +34,6 @@ function postForm(e){
 
 $(document).ready(function() {
     $('#myModal .btn-primary').on("click", postForm);
+    $(".repost").on('click', rePost);
+
 });
