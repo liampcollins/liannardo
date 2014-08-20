@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth, signed_in_user=nil)
     if auth[:provider] == "twitter"
       user = signed_in_user || User.find_by_email(auth.info.nickname + "@twitter.com")
+    
     else
       user = signed_in_user || User.find_by_email(auth.info.email)
     end 
@@ -35,6 +36,7 @@ class User < ActiveRecord::Base
         if auth.provider == "facebook"
           user.facebook_token = auth.credentials.token
         end
+  
       user
     else
       if auth[:provider] == "twitter"
@@ -60,8 +62,7 @@ class User < ActiveRecord::Base
           user.facebook_token = auth.credentials.token
         end
       end
-    end
-    
+    end 
   end
 
   def self.new_with_session(params, session)

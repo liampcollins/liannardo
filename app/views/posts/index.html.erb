@@ -19,8 +19,8 @@
     
     <th>Content</th>
     <th>Author</th>
-    <th>Likes</th>
-    <th>Hates</th>
+    <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
+    <th><span class="glyphicon glyphicon-thumbs-down"></th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,24 +29,31 @@
   </tr>
   
 <!-- MOVE TO HELPER -->
-<% current_user_present = current_user.users.select do |user| %>
-  <% if user.id == current_user.id %>
-    <% user %>
+<% current_user_and_followers = User.all.select do |user| %>
+  <% is_a_follower = user.users.select do |follower| %>
+    <% if follower.id == current_user.id %>
+      <% follower %>
+    <% end %>
+  <% end %>
+  <% if is_a_follower.length > 0 %>
+  <% user %>
   <% end %>
 <% end %>
-<% if current_user_present.length > 0%>
-  <% current_user_and_followers = current_user.users  %>
-<% else %>
-  <% current_user_and_followers = current_user.users.push(current_user)  %>
-<% end %>
 <!-- MOVE TO HELPER -->
 
 
 
-<% @posts.each do |post| %>
-  
+<% @posts.each do |post_record| %>
+  <!-- MOVE TO HELPER -->
+  <% if post_record.repost_id %>
+    <% post = Post.find(post_record.repost_id)%>
+  <% else %>
+    <% post = Post.find(post_record.id)%>
+  <% end %>
+  <!-- MOVE TO HELPER -->
 
-<!-- MOVE TO HELPER -->
+
+  <!-- MOVE TO HELPER -->
   <% likes = post.votes.all.map do |vote| %>
   <% vote.sentiment if vote.sentiment == true %>
   <% end %>
@@ -59,7 +66,9 @@
 
 
   <% current_user_and_followers.each do |user| %>
+
     <% if post.user_id == user.id%>
+      
       <tr>
         <td><%= post.content %></td>
         <td><%= link_to post.user.name, member_path(user) %></td>
@@ -93,11 +102,11 @@
         <% end %>
 
 
-
-        <td><button class = "<%= starting_liked_status %> like">Like</button></td>
-        <td><button class = "<%= starting_hated_status %> hate">Hate</button></td>
+        
+        <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
+        <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></td>
         <td><button class = "repost">Repost</button></td>
-
+        
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
