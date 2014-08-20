@@ -21,6 +21,7 @@
     <th>Author</th>
     <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
     <th><span class="glyphicon glyphicon-thumbs-down"></th>
+    <th><span class="glyphicon glyphicon-repeat"></th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,88 +30,135 @@
   </tr>
   
 <!-- MOVE TO HELPER -->
-<% current_user_and_followers = User.all.select do |user| %>
-  <% is_a_follower = user.users.select do |follower| %>
-    <% if follower.id == current_user.id %>
-      <% follower %>
+<!-- CREATING AN ARRAY CONTAINING THE USER AND WHO THEY ARE FOLLOWING -->
+<% following = User.all.select do |user| %>
+  <% is_following = user.users.select do |following| %>
+    <% if following.id == current_user.id %>
+      <% following %>
     <% end %>
   <% end %>
-  <% if is_a_follower.length > 0 %>
+  <% if is_following.length > 0 %>
   <% user %>
+  <% end %>
+<% end %>
+<% current_user_and_following = following << current_user %>
+<!-- MOVE TO HELPER -->
+
+
+
+<!-- MOVE TO HELPER -->
+<!-- REMOVING RETWEETS THAT WERE INITIALLY TWEETEED BY USER OF SOMEONE THEY'RE FOLLOWING -->
+<% @original_post_ids = [] %>
+<% @repost_ids = [] %>
+<% @posts.each do |post_record| %>
+  <% current_user_and_following.each do |user| %>
+    <% if post_record.user_id == user.id%>
+      <% if post_record.repost_id %>
+        <% @repost_ids.push(post_record.repost_id)%>
+      <% else %>
+        <% @original_post_ids.push(post_record.id) %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
 <!-- MOVE TO HELPER -->
 
 
-
-<% @posts.each do |post_record| %>
-  <!-- MOVE TO HELPER -->
-  <% if post_record.repost_id %>
-    <% post = Post.find(post_record.repost_id)%>
-  <% else %>
-    <% post = Post.find(post_record.id)%>
-  <% end %>
-  <!-- MOVE TO HELPER -->
+<!-- MOVE TO HELPER -->
+<!-- Creating an array of ids of posts you have reposted -->
+<% current_user_reposts = []%>
+<% current_user.posts.all.each do |post| %>
+  <% current_user_reposts.push(post.repost_id) %>
+<% end %>
+<!-- MOVE TO HELPER -->
 
 
-  <!-- MOVE TO HELPER -->
-  <% likes = post.votes.all.map do |vote| %>
-  <% vote.sentiment if vote.sentiment == true %>
-  <% end %>
-  <% likes.delete(nil)%>
-  <% hates = post.votes.all.map do |vote| %>
-  <% vote.sentiment if vote.sentiment == false %>
-  <% end %>
-  <% hates.delete(nil)%>
-  <!-- MOVE TO HELPER -->
 
+<% current_user_and_following.each do |user| %>
+  <% @posts.each do |post_record| %>
+    <% if post_record.user_id == user.id%>
 
-  <% current_user_and_followers.each do |user| %>
+    <!-- MOVE TO HELPER -->
+    <!--   ENSURING RETWEETS ARE LISTED AS WELL AS DIRECT TWEETS -->
+    <% if post_record.repost_id %>
+      <% unless @original_post_ids.include?(post_record.repost_id) %>
+        <% post = Post.find(post_record.repost_id)%>
+      <% end %>
+    <% else %>
+      <% post = Post.find(post_record.id)%>
+    <% end %>
+    <!-- MOVE TO HELPER -->
 
-    <% if post.user_id == user.id%>
-      
-      <tr>
-        <td><%= post.content %></td>
-        <td><%= link_to post.user.name, member_path(user) %></td>
-        <td class="likes"><%= likes.length %></td>
-        <td class="hates"><%= hates.length %></td>
-        <td class="id" style="visibility:hidden;"><%= post.id %></td>
-
-        <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
-        <!-- Getting votes made by current user on this post -->
-        <%vote = post.votes.select do |vote| %>
-          <% if vote.user_id == current_user.id %>  
-          <% vote %>
+      <% if post %>
+        <tr>
+          <td><%= post.content %></td>
+          <% if post_record.repost_id %>
+            <td><%= link_to user.name, member_path(user) %>->RT-><%= link_to post.user.name, member_path(post.user) %></td>
+          <% else %>
+            <td><%= link_to user.name, member_path(user) %></td>
           <% end %>
-        <% end %>
-        <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
-        <% if vote.length ==1 %>
-          <% sentiment = vote.first.sentiment %>
-          <% if sentiment == true %>
+
+
+
+          <!-- MOVE TO HELPER -->
+          <!--   CALCULATING THE NUMBER OF LIKES, HATES AND REPOSTS-->
+          <% likes = post.votes.all.map do |vote| %>
+            <% vote.sentiment if vote.sentiment == true %>
+          <% end %>
+          <% likes.delete(nil)%>
+          <% hates = post.votes.all.map do |vote| %>
+            <% vote.sentiment if vote.sentiment == false %>
+          <% end %>
+          <% hates.delete(nil)%>
+          <% reposts = Post.where(repost_id: post.id).count %>
+          <!-- MOVE TO HELPER -->
+
+          <td class="likes"><%= likes.length %></td>
+          <td class="hates"><%= hates.length %></td>
+          <td class="reposts"><%= reposts%></td>
+          <td class="id" style="visibility:hidden;"><%= post.id %></td>
+
+
+          <!-- MOVE  TO HELPERS -->
+          <!-- Getting votes made by current user on this post -->
+          <%vote = post.votes.select do |vote| %>
+            <% if vote.user_id == current_user.id %>  
+            <% vote %>
+            <% end %>
+          <% end %>
+          <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
+          <% if vote.length ==1 %>
+            <% sentiment = vote.first.sentiment %>
+            <% if sentiment == true %>
+              <% starting_liked_status = "liked_status"%>
+              <% starting_hated_status = "unchecked_status"%>
+            <% else sentiment == false %>
+            <% starting_liked_status = "unchecked_status"%>
+            <% starting_hated_status = "hated_status"%>
+          <% end %>
+          <% elsif vote.length ==2%>
             <% starting_liked_status = "liked_status"%>
+            <% starting_hated_status = "hated_status"%>
+          <% else %>
+            <% starting_liked_status = "unchecked_status"%>
             <% starting_hated_status = "unchecked_status"%>
-          <% else sentiment == false %>
-          <% starting_liked_status = "unchecked_status"%>
-          <% starting_hated_status = "hated_status"%>
-        <% end %>
-        <% elsif vote.length ==2%>
-          <% starting_liked_status = "liked_status"%>
-          <% starting_hated_status = "hated_status"%>
-        <% else %>
-          <% starting_liked_status = "unchecked_status"%>
-          <% starting_hated_status = "unchecked_status"%>
-        <% end %>
-
-
-        
-        <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
-        <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></td>
-        <td><button class = "repost">Repost</button></td>
-        
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+          <% end %>
+          <!--Checking if post has been retweeted by you already -->
+          <% if current_user_reposts.include?(post_record.id) %>
+            <% starting_repost_status = "reposted"%>
+          <% else %>
+            <% starting_repost_status = "not_reposted"%>
+          <% end %>
+          
+          <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
+          <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></td>
+          <td><button class = "<%= starting_repost_status %> repost">Repost</button></td>
+                 
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
