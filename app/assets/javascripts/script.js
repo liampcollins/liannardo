@@ -25,15 +25,60 @@ function updateHates(button, post){
   }
 }
 
+
+
+function UpdateScoreForHate(button, post, table){
+  console.log("button")
+  if($(button).hasClass("hated_status")){
+    table.children().each(function(){
+      $row = $(this)
+      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
+        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)
+      }
+    })
+  }else{table.children().each(function(){
+      $row = $(this)
+      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
+        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)
+      }
+    })
+  }
+}
+
+
+function UpdateScoreForLike(button, post, table){
+  console.log("button")
+  if($(button).hasClass("liked_status")){
+    table.children().each(function(){
+      $row = $(this)
+      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
+        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)
+      }
+    })
+  }else{table.children().each(function(){
+      $row = $(this)
+      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
+        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)
+      }
+    })
+  }
+}
+
+
+
 function toggleLike(){
   console.log("like")
   $this = $(this)
   $post = $this.parent().parent()
+  $table = $post.parent()
   id = parseInt($post.children('.id').html())
-  request("POST", "/votes", {vote:{sentiment: true, post_id: id}}).success(function(){
+  request("POST", "/votes", {vote:{sentiment: true, post_id: id}
+  }).success(function(){
   $this.toggleClass("liked_status").toggleClass("unchecked_status")
   }).success(function(){
     updateLikes($this, $post)
+  }).success(function(){
+    UpdateScoreForLike($this, $post, $table)
   })
 }
 
@@ -43,12 +88,16 @@ function toggleLike(){
 function toggleHate(){
   $this = $(this)
   $post = $this.parent().parent()
+  $table = $post.parent()
   id = parseInt($post.children('.id').html())
-  request("POST", "/votes", {vote:{sentiment: false, post_id: id}}).success(function(){
+  request("POST", "/votes", {vote:{sentiment: false, post_id: id}
+  }).success(function(){
     console.log("success")
     $this.toggleClass("hated_status").toggleClass("unchecked_status")
   }).success(function(){
     updateHates($this, $post)
+  }).success(function(){
+    UpdateScoreForHate($this, $post, $table)
   })
 }
 

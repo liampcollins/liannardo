@@ -19,6 +19,7 @@
     
     <th>Content</th>
     <th>Author</th>
+    <th></th>
     <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
     <th><span class="glyphicon glyphicon-thumbs-down"></th>
     <th><span class="glyphicon glyphicon-repeat"></th>
@@ -78,6 +79,8 @@
   <% @posts.each do |post_record| %>
     <% if post_record.user_id == user.id%>
 
+
+
     <!-- MOVE TO HELPER -->
     <!--   ENSURING RETWEETS ARE LISTED AS WELL AS DIRECT TWEETS -->
     <% if post_record.repost_id %>
@@ -89,14 +92,35 @@
     <% end %>
     <!-- MOVE TO HELPER -->
 
+
+  <!-- MOVE TO HELPER -->
+<!--   Calculating the score (likes and hates on posts) for a user -->
+    <% userhates = 0 %>
+    <% user.posts.each do |post| %>
+      <% hates = post.votes.where(sentiment: false)  %>
+      <% post_hates_number = hates.length %>
+      <% userhates += post_hates_number %>
+    <% end %>
+    <% userlikes = 0 %>
+    <% user.posts.each do |post| %>
+      <% likes = post.votes.where(sentiment: true)  %>
+      <% post_likes_number = likes.length %>
+      <% userlikes += post_likes_number %>
+    <% end %>
+    <% @userscore = userlikes -  userhates%>
+    <!-- MOVE TO HELPER -->
+
+
+
       <% if post %>
         <tr>
           <td><%= post.content %></td>
           <% if post_record.repost_id %>
-            <td><%= link_to user.name, member_path(user) %>->RT-><%= link_to post.user.name, member_path(post.user) %></td>
+            <td><%= link_to user.name, member_path(user), :class=>"user_name"%>->RT-><%= link_to post.user.name, member_path(post.user) %></td>
           <% else %>
-            <td><%= link_to user.name, member_path(user) %></td>
+            <td><%= link_to user.name, member_path(user), :class=>"user_name" %></td>
           <% end %>
+          <td class="user_score"><%= @userscore %></td>
 
 
 
