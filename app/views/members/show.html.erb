@@ -23,11 +23,23 @@
   
 <div class="following_user" style="display: none;"><%= @user.id %></div>
 <div class="current_user"><% current_user.id %></div>
-Followers:<div class="follower_count"><%= @user.users.length %></div>
-<% if @user.users.length == 0 %>
+<b>Followers:</b><div class="follower_count"><%= @user.users.length %></div>
+<p>
+  <% @user.name %>
+</p>
+<p>
+  <% if @user.bio ==nil %>
      
   <% else %>
-    <div class="followers">Followers:
+    <b>About Me:</b>
+    <%= @user.bio %>
+  <%end %>
+</p>
+
+<% if @user.users.length == 0 %>
+
+  <% else %>
+    <div class="followers"><b>Followers:</b>
      <% @user.users.each do |user| %>
       <%= user.name %>
      <% end %>
@@ -38,13 +50,7 @@ Followers:<div class="follower_count"><%= @user.users.length %></div>
 
 
 
-<p>
-  <% @user.name %>
-</p>
-<p>
-  <b>About Me:</b>
-  <%= @user.bio %>
-</p>
+
 
 
 <table>
