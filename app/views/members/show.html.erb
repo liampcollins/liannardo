@@ -11,13 +11,25 @@
 
 
 <br/>
-<button class="follow">Follow</button>
+<% if @user.id == current_user.id %>
+   
+<% else %>
+  <button class="follow">Follow</button>
+<% end %>
 
   
-<div class="following_user"><%= @user.id %></div>
+You are viewing:<div class="following_user"><%= @user.id %></div>
+YOU ARE SIGNED IN AS USER:<div class="current_user"><%= current_user.id %></div>
+<div class="followers">My followers are:
 
 
+ <% @user.users.each do |user| %>
+  <%= user.name %>
+ <% end %>
+ </div>
 
+   
+<!-- #if user.users include ? user.users.id then cannot follow -->
 
 <p>
   <b>Content:</b>

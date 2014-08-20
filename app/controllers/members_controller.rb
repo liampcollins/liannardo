@@ -32,17 +32,28 @@ class MembersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:user][:user_id])
     #subscribing to user
+
+    follower_exist = @user.users.all.select do |user|
+      if user.id == current_user.id
+        user
+      end  
+    end 
+    #binding.pry
+    if follower_exist.length >0
+      @user.users.delete_if{ |user| user[:user_id] == current_user.id }
+    else
     @user.users << current_user
-
-
-
-
+    @user.save
+    end
     respond_to do |format|
       
-        format.json { render :json => "success" }
-      
+      format.json { render :json => "success" }
+
     end
   end
 end
+
+
+

@@ -52,6 +52,15 @@ function toggleHate(){
   })
 }
 
+// function updateFollowCount(button, post){
+//   console.log("button")
+//   if($(.follow).hasClass("following")){
+//     user.follow('.follow').html(parseInt(user.follow('.follow').html()) +1)
+//   }else{
+//     user.follow('.follow').html(parseInt(user.follow('.follow').html()) -1)
+//   }
+// }
+
 function updateFollow(){
   console.log("hello world")
   $('.follow').toggleClass('following')
@@ -67,9 +76,8 @@ function updateFollow(){
 function toggleFollow(){
   $this = $(this)
   $user_id = parseInt($(this).next().text())
-  data={user_id : $user_id}
-
-  request("PUT", "/members/"+ $user_id, data).success(updateFollow())
+  data={user:{user_id: $user_id}}
+  request("PUT", "/members/"+$user_id, data).success(updateFollow($this))
 }
 
 
