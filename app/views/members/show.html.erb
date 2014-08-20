@@ -49,7 +49,29 @@
 
 
 
+<b>Following:</b>
+ <% User.all.each do |user| %>
+  <% if user.users.include? @user %>
+    <%= user.name %>
+  <% else %>
+      
+  <% end %>
+<% end %>
 
+
+   
+
+<% following = User.all.select do |user| %>
+  <% is_following = user.users.select do |following| %>
+    <% if following.id == current_user.id %>
+      <% following %>
+    <% end %>
+  <% end %>
+  <% if is_following.length > 0 %>
+  <% user %>
+  <% end %>
+<% end %>
+<% current_user_and_following = following << current_user %>
 
 
 
