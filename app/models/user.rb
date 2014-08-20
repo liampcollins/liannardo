@@ -46,18 +46,18 @@ class User < ActiveRecord::Base
           user.uid = auth.uid
           user.name = auth.info.name
           user.email = auth.info.nickname + "@twitter.com"
-          user.profile_picture = auth.info.profile_picture
+          user.profile_picture = auth.info.image
           user.password = Devise.friendly_token[0,20]
           user.facebook_token = auth.credentials.token
         end
       else 
         where(auth.slice(:provider, :uid)).first_or_create do |user|
-    
+          
           user.provider = auth.provider
           user.uid = auth.uid
           user.name = auth.info.name
           user.email = auth.info.email
-          user.profile_picture = auth.info.profile_picture
+          user.profile_picture = auth.info.image
           user.password = Devise.friendly_token[0,20]
           user.facebook_token = auth.credentials.token
         end
