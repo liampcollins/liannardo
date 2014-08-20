@@ -18,6 +18,7 @@ class MembersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @following = @user.users.include? current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,18 +36,12 @@ class MembersController < ApplicationController
     @user = User.find(params[:user][:user_id])
     #subscribing to user
 
-    follower_exist = @user.users.all.select do |user|
-      if user.id == current_user.id
-        user
-      end  
-    end 
-    #binding.pry
-    if follower_exist.length >0
-      @user.users.delete_if{ |user| user[:user_id] == current_user.id }
-    else
-    @user.users << current_user
-    @user.save
+    if params[:user][:follow] == 'false'
+      @user.users << current_user
+    else params[:user][:follow] == 'true'
+      @user.users.delete(current_user)
     end
+
     respond_to do |format|
       
       format.json { render :json => "success" }

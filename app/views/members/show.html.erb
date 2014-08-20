@@ -12,14 +12,18 @@
 
 <br/>
 <% if @user.id == current_user.id %>
-   
 <% else %>
-  <button class="follow">Follow</button>
+  <% if @following %>
+    <button class="follow following">Following</button>
+  <% else %>
+    <button class="follow not_following">Follow</button>
+  <% end %>
 <% end %>
 
   
 You are viewing:<div class="following_user"><%= @user.id %></div>
 YOU ARE SIGNED IN AS USER:<div class="current_user"><%= current_user.id %></div>
+YOU HAVE THIS MANY FOLLOWERS: <div class="follower_count"><%= @user.users.length %></div>
 <div class="followers">My followers are:
 
 
@@ -28,8 +32,9 @@ YOU ARE SIGNED IN AS USER:<div class="current_user"><%= current_user.id %></div>
  <% end %>
  </div>
 
-   
-<!-- #if user.users include ? user.users.id then cannot follow -->
+
+
+
 
 <p>
   <b>Content:</b>
