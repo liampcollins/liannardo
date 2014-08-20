@@ -237,7 +237,11 @@ Devise.setup do |config|
 
   config.omniauth :facebook, ENV["FACEBOOK_AUTH_CLIENT_ID"], ENV["FACEBOOK_AUTH_CLIENT_SECRET"],  { :scope => "user_photos, publish_stream, offline_access, email" }
 
-   config.omniauth :linkedin, ENV['LINKEDIN_AUTH_CLIENT_ID'], ENV['LINKEDIN_AUTH_CLIENT_SECRET'], :scope => 'r_emailaddress r_basicprofile' 
+  config.omniauth :linkedin, ENV['LINKEDIN_AUTH_CLIENT_ID'], ENV['LINKEDIN_AUTH_CLIENT_SECRET'], :scope => 'r_emailaddress r_basicprofile'
+
+  config.omniauth :twitter, ENV['TWITTER_AUTH_CLIENT_ID'], ENV['TWITTER_AUTH_CLIENT_SECRET'] 
+
+
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

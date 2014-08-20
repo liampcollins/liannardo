@@ -18,9 +18,10 @@
     <% else %>
       <%= link_to 'sign in', new_user_session_path %>
       <%= link_to 'sign up', new_user_registration_path %>
-      <%= link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2)%>
-      <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook)%>
-      <%= link_to "Login with LinkedIn", user_omniauth_authorize_path(:linkedin)%>
+      <%= link_to "Google login", user_omniauth_authorize_path(:google_oauth2)%>
+      <%= link_to "FB login", user_omniauth_authorize_path(:facebook)%>
+      <%= link_to "LinkedIn login", user_omniauth_authorize_path(:linkedin)%>
+      <%= link_to "Twitter login", user_omniauth_authorize_path(:twitter)%>
 
     <% end %>
 
