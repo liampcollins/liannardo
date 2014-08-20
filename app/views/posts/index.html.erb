@@ -81,14 +81,8 @@
   <!-- MOVE TO HELPER -->
 
 
-  <!-- MOVE TO HELPER -->
-  <!-- Creating an array of ids of posts you have reposted -->
-  <% current_user_reposts = []%>
-  <% current_user.posts.all.each do |post| %>
-    <% current_user_reposts.push(post.repost_id) %>
-  <% end %>
-  <!-- MOVE TO HELPER -->
 
+  <% current_user_reposts = find_reposts(current_user)%>
 
 
   <% current_user_and_following.each do |user| %>
@@ -109,24 +103,8 @@
       <!-- MOVE TO HELPER -->
 
 
-    <!-- MOVE TO HELPER -->
-  <!--   Calculating the score (likes and hates on posts) for a user -->
-      <% userhates = 0 %>
-      <% user.posts.each do |post| %>
-        <% hates = post.votes.where(sentiment: false)  %>
-        <% post_hates_number = hates.length %>
-        <% userhates += post_hates_number %>
-      <% end %>
-      <% userlikes = 0 %>
-      <% user.posts.each do |post| %>
-        <% likes = post.votes.where(sentiment: true)  %>
-        <% post_likes_number = likes.length %>
-        <% userlikes += post_likes_number %>
-      <% end %>
-      <% @userscore = userlikes -  userhates%>
-      <!-- MOVE TO HELPER -->
 
-
+      <% @user_score = user_score(user)%>
 
         <% if post %>
           <tr>
@@ -136,7 +114,9 @@
             <% else %>
               <td><%= link_to user.name, member_path(user), :class=>"user_name" %></td>
             <% end %>
-            <td class="user_score"><%= @userscore %></td>
+            <%# binding.pry%>
+
+            <td class="user_score"><%= @user_score %></td>
 
 
 
