@@ -52,19 +52,43 @@ function toggleHate(){
   })
 }
 
+
+
+function updateFollowcount(button, post){
+  console.log("button")
+  if($(button).hasClass("following")){
+    $('.follower_count').html(parseInt($('.follower_count').text()) +1)
+  }else{
+    $('.follower_count').html(parseInt($('.follower_count').text())-1)
+  }
+}
+
 function updateFollow(){
   console.log("hello world")
-  $('.follow').toggleClass('following').text("following")
 
+  $('.follow').toggleClass('following')
+    if ($('.follow').text() == "Follow") {
+      $('.follow').text("Following")
+    }else{
+      $('.follow').text("Follow")
+    }
 }
+
+
 
 function toggleFollow(){
   $this = $(this)
   $user_id = parseInt($(this).next().text())
-  data={user_id : $user_id}
-
-  request("PUT", "/members/"+ $user_id, data).success(updateFollow())
+  if ($(this).text() == 'Follow') {
+    var data={user:{user_id: $user_id, follow: false}}
+  } else {
+    var data={user:{user_id: $user_id, follow: true}}
+  }
+  request("PUT", "/members/"+$user_id, data).success(updateFollow($this)).success(
+    updateFollowcount($this)
+  )
 }
+
 
 
 
@@ -82,7 +106,8 @@ $(function(){
   $('.like').on('click', toggleLike);
   $(".hate").on('click', toggleHate);
   //$(".repost").on('click', rePost);
-  $(".follow").on('click', toggleFollow);
+  $(".not_following").on('click', toggleFollow);
+  $(".following").on('click', toggleFollow);
   //$('button').tooltip();
 })
 

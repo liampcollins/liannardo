@@ -75,20 +75,28 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     if params[:post][:repost_id]
+      #Adding if clicking repost, deleting if unclicking repost
+      repost_id = (params[:post][:repost_id]).to_i
+      repost_exist = current_user.posts.all.select do |post|
+        if post.repost_id == repost_id
+           post
+        end
+      end
+      if repost_exist.length > 0
+        Post.destroy(repost_exist.first.id)
+      else
       @post = Post.new(params[:post])
       @post.user_id = current_user.id
+      @post.save
+      end
     else
       @post = Post.new(params[:post])
       @post.user_id = current_user.id
+      @post.save
     end
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
-        format.json { render json: @posts, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
+      format.json { render json: @posts, status: :created, location: @post }
     end
   end
 

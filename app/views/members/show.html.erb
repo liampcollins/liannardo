@@ -11,10 +11,27 @@
 
 
 <br/>
-<button class="follow">Follow</button>
+<% if @user.id == current_user.id %>
+<% else %>
+  <% if @following %>
+    <button class="follow following">Following</button>
+  <% else %>
+    <button class="follow not_following">Follow</button>
+  <% end %>
+<% end %>
 
   
-<div class="following_user"><%= @user.id %></div>
+You are viewing:<div class="following_user"><%= @user.id %></div>
+YOU ARE SIGNED IN AS USER:<div class="current_user"><%= current_user.id %></div>
+YOU HAVE THIS MANY FOLLOWERS: <div class="follower_count"><%= @user.users.length %></div>
+<div class="followers">My followers are:
+
+
+ <% @user.users.each do |user| %>
+  <%= user.name %>
+ <% end %>
+ </div>
+
 
 
 
@@ -107,7 +124,6 @@
       <% end %>
       <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
       <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></td>
-      <td><button class = "repost">Repost</button></td>
 
       <td><%= link_to 'Show', post %></td>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
