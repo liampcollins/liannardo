@@ -37,9 +37,9 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li><% if current_user.profile_picture == nil %>
-              <img id="image" src="<%= current_user.image %>" />
+              <img id="nav_image" src="<%= current_user.image %>" />
             <% else %>
-              <img id="image" src="<%= current_user.profile_picture %>" />
+              <img id="nav_image" src="<%= current_user.profile_picture %>" />
             <% end%>
           </li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
