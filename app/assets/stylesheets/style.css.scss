@@ -3,8 +3,7 @@
 background-image: -webkit-gradient(
   linear, left top, left bottom, from(rgba(50,50,50,0.8)),
   to(rgba(80,80,80,0.2)), color-stop(.5,#333333)
-);
-
+  );
   color: white;
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 15px;
@@ -27,6 +26,18 @@ background-image: -webkit-gradient(
     height: 120%;
     top:0;
     left: 0;  
+  }
+
+  .text_bs {
+ 
+  color: black;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 24px;
+  float: left;
+  max-width: 700px;
+  margin-left: 320px; 
+  border-style:dashed;
+  padding: 0px 17px 17px 17px;
   }
 
 
