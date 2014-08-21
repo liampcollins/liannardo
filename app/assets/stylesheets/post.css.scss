@@ -27,11 +27,17 @@
  max-width: 200px; 
 }
 
+#post_image {
+  max-width: 100px;
+}
+
 #sidebar_list {
   list-style: none;
 }
 
-
+tr {
+  border: 1px solid black;
+}
 
 
 .unchecked_status {

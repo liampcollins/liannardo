@@ -1,0 +1,70 @@
+<div class="left-sidebar">
+  <h1><%= @user.name %>'s Profile</h1>
+  <div class="left-side">
+  <img id="prof_pic" src="<%= getImage(@user) %>" />
+  </div>
+
+  <br/>
+  <% if @user.id == current_user.id %>
+  <% else %>
+    <% if @following %>
+      <button class="follow following">Following</button>
+    <% else %>
+      <button class="follow not_following">Follow</button>
+    <% end %>
+  <% end %>
+    
+  <div class="following_user" style="display: none;"><%= @user.id %></div>
+  <div class="current_user"><% current_user.id %></div>
+  <b>Followers:</b><div class="follower_count"><%= @user.users.length %></div>
+  <p>
+    <% @user.name %>
+  </p>
+  <p>
+    <% if @user.bio ==nil %>
+       
+    <% else %>
+      <b>About Me:</b>
+      <%= @user.bio %>
+    <%end %>
+  </p>
+
+  <% if @user.users.length == 0 %>
+
+    <% else %>
+      <div class="followers"><b>Followers:</b>
+       <% @user.users.each do |user| %>
+        <%= user.name %>
+       <% end %>
+       </div>
+  <% end %>
+
+
+
+
+  <b>Following:</b>
+   <% User.all.each do |user| %>
+    <% if user.users.include? @user %>
+      <%= user.name %>
+    <% else %>
+        
+    <% end %>
+  <% end %>
+
+  <br>
+     
+
+  <% following = User.all.select do |user| %>
+    <% is_following = user.users.select do |following| %>
+      <% if following.id == current_user.id %>
+        <% following %>
+      <% end %>
+    <% end %>
+    <% if is_following.length > 0 %>
+    <% user %>
+    <% end %>
+  <% end %>
+  <% current_user_and_following = following << current_user %>
+
+
+</div>

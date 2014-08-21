@@ -1,22 +1,6 @@
 <div id="feed">
-  <table>
-    <tr>
-      <th>Author</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-     
-      <th></th>
-      <th></th>
-      <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
-      <th><span class="glyphicon glyphicon-thumbs-down"></th>
-      <th><span class="glyphicon glyphicon-repeat"></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <!-- <div> -->
+
 
   <% current_user_and_following = userAndFollowing(current_user) %>
   <% @original_post_ids = getOriginalPostsIds(current_user_and_following)%>
@@ -30,17 +14,15 @@
       <% @user_score = user_score(user)%>
 
         <% if post %>
-          <tr>
-            <td class="name_td"><%= link_to user.name, member_path(user), :class=>"user_name"%><%= ifRP(post_record, post)%><%=rpFrom(post_record, post) %></td>
-            <td><%= post.content %></td>
-            <td></td>
-            <td><img class="smiley" src=<%= sentimentIcon(post)%>></td>
-            <td class="user_score"><%= @user_score%></td>
-            <td class="score_icon"><img class="smiley" src=<%= scoreIcon(user)%>></td>
-            <td class="likes"><%= numberOfLikes(post) %></td>
-            <td class="hates"><%= numberOfHates(post) %></td>
-            <td class="reposts"><%= numReposts(post)%></td>
-            <td class="id" style="visibility:hidden;"><%= post.id %></td>
+          <div class="tweet">
+            
+            <div><img id="post_image" src="<%= getImage(post.user) %>" /></div>
+            <div><%= post.content %></div>
+            <div><img class="smiley" src=<%= sentimentIcon(post)%>></div>
+            <div class="name_td"><%= link_to user.name, member_path(user), :class=>"user_name"%><%= ifRP(post_record, post)%><%=rpFrom(post_record, post) %></div>
+            <div class="score_icon"><img class="smiley" src=<%= scoreIcon(user)%>></div>
+            <div class="user_score"><%= @user_score%></div>
+            
 
 
             <!-- MOVE  TO HELPERS -->
@@ -74,15 +56,22 @@
               <% starting_repost_status = "not_reposted"%>
             <% end %>
             
-            <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
-            <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></td>
-            <td><button class = "<%= starting_repost_status %> repost">Repost</button></td>
+            <div><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></div>
+            <div class="likes"><%= numberOfLikes(post) %></div>
+            <div><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></div>
+            <div class="hates"><%= numberOfHates(post) %></div>
+            
+            <div class="id" style="visibility:hidden;"><%= post.id %></div>
+            <div><button class = "<%= starting_repost_status %> repost">Repost</button></div>
+            <div class="reposts"><%= numReposts(post)%></div>
                    
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+            <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+          
+          </div>
+
         <% end %>
       <% end %>
     <% end %>
   <% end %>
-  </table>
+  <!-- </table> -->
 </div>
