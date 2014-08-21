@@ -39,27 +39,21 @@ class PostsController < ApplicationController
       count = latestpost.to_i - lastpost.to_i
     end  
 
-
+    # @q = Post.search(params[:q])
+    # @posts = @q.result(distinct: true)
     # count = nil 
-    # latestpost_id = Post.last.id
-    # latestpost = Post.last
-    # lastpost_id = params[:postId]
-    # lastpost = params[:post]
-
-    # following = User.all.select do |user|
-    #   is_following = user.users.select do |following|
-    #     if following.id == current_user.id
-    #       following
-    #     end
-    #   end
-
-    #   if is_following.include? latestpost.user
+    # latestpost = Post.last.id
+    # lastpost = params[:postId]
+    # if params[:postId]
+    #   thenewpost = Post.find(params[:postId])
+    #   theusers= current_user.users.map{|u| u.id}
+    #   if theusers.include?(thenewpost.user_id) 
     #     if lastpost
-    #       count = latestpost_id.to_i - lastpost_id.to_i
-    #     end 
-    #   end 
+    #       count = latestpost.to_i - lastpost.to_i
+    #     end  
+    #   end
     # end
-
+    
     # @p = User.search(params[:p])
     # @users = @p.result(distinct: true)
     respond_to do |format|

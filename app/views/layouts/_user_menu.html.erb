@@ -26,11 +26,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <% if current_user.profile_picture == nil %>
-            <img id="nav_image" src="<%= current_user.image %>" />
-          <% else %>
-            <img id="nav_image" src="<%= current_user.profile_picture %>" />
-          <% end%>
+          <img id="nav_image" src="<%= getImage(current_user) %>" />
         </li>
         <li>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
@@ -60,7 +56,7 @@
       </div>
       <div class="modal-body">
         <form onsubmit="return false;">
-            <input type="text" />
+            <input type="textfield" />
             <a class="btn btn-primary" onclick="this.parentNode.submit();" href="">Create Post</a>
         </form>
       </div>

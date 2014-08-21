@@ -1,0 +1,93 @@
+<div class="profile_feed">
+
+  <div class="list_own_posts">
+  <div>
+    
+    <span class="glyphicon glyphicon-thumbs-up"></span>
+    <span class="glyphicon glyphicon-thumbs-down">
+
+
+  </div class="each_element">
+
+
+    <% @user.posts.each do |post_record| %>
+      
+    <hr>
+      <!-- MOVE TO HELPER -->
+      <% if post_record.repost_id %>
+        <% post = Post.find(post_record.repost_id)%>
+      <% else %>
+        <% post = Post.find(post_record.id)%>
+      <% end %>
+      <!-- MOVE TO HELPER -->
+
+      
+      <!-- MOVE TO HELPER -->
+      <% likes = post.votes.all.map do |vote| %>
+        <% vote.sentiment if vote.sentiment == true %>
+      <% end %>
+      <% likes.delete(nil)%>
+      <% hates = post.votes.all.map do |vote| %>
+        <% vote.sentiment if vote.sentiment == false %>
+      <% end %>
+      <% hates.delete(nil)%>
+      <!-- MOVE TO HELPER -->
+
+
+
+        
+
+        <% if post_record.repost_id %>
+          <div>(RT)<%= link_to post.user.name, member_path(post.user) %></div>
+        <% else %>
+          <div class="user_name"><%= link_to @user.name, member_path(@user) %></div>
+        <% end %>
+        <div class="tweet_content"><%= post.content %></div>
+
+        <div class="votes">
+        <div class="likes"><%= likes.length %></div>
+        <div class="hates"><%= hates.length %></div>
+        <div class="id" style="visibility:hidden;"><%= post.id %></div>
+
+
+
+        <!-- MOVE ALL OF THIS METHOD TO HELPERS -->
+        <!-- Getting votes made by current user on this post -->
+        
+        <%vote = post.votes.select do |vote| %>
+          <% if vote.user_id == current_user.id %>  
+          <% vote %>
+          <% end %>
+        <% end %>
+
+        <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
+        <% if vote.length ==1 %>
+          <% sentiment = vote.first.sentiment %>
+          <% if sentiment == true %>
+            <% starting_liked_status = "liked_status"%>
+            <% starting_hated_status = "unchecked_status"%>
+          <% else sentiment == false %>
+          <% starting_liked_status = "unchecked_status"%>
+          <% starting_hated_status = "hated_status"%>
+          <% end %>
+        <% elsif vote.length ==2%>
+          <% starting_liked_status = "liked_status"%>
+          <% starting_hated_status = "hated_status"%>
+        <% else %>
+          <% starting_liked_status = "unchecked_status"%>
+          <% starting_hated_status = "unchecked_status"%>
+        <% end %>
+<!--       </div>
+      <div class="icons"> -->
+        <div class="icon"><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></div>
+        <div class="icon"><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></div>
+        </div>
+        <div class="edit_post"><%= link_to 'Show', post %></div>
+        <div class="edit_post"><%= link_to 'Edit', edit_post_path(post) %></div>
+        <div class="edit_post"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        
+    <% end %>
+  </div>
+
+
+</div>
