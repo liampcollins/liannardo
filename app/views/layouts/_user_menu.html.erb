@@ -37,7 +37,7 @@
             <li><a href="/about">About Us</a></li>
             <li><a href="/terms">Terms & Conditions</a></li>
             <li class="divider"></li>
-            <li><a href="/members/<%=current_user.id%>/edit">Edit Profile</a></li>
+            <li><%= link_to 'Edit User', edit_user_registration_path %></li>
           </ul>
         </li>
       </ul>

@@ -2,22 +2,29 @@
   box-sizing: border-box;
 }
 .left-sidebar{
-  border: 1px solid black;
+  border: 1px solid white;
   display: block;
   padding: 20px;
   text-align: center;
   position: fixed;
   float: left;
   width: 40%;
+  padding-bottom: 100px;
 }
  h1{
   padding: 20px;
  }
-
-
+  .new_post_count{
+    border: 1px solid white;
+    text-align: center;
+    padding: 20px;
+  }
+ .followers{
+   padding: 7px;
+ }
 
 .profile_feed{
-  border: 1px solid black;
+  border: 1px solid white;
   display: block;
   padding: 20px;
   text-align: center;
@@ -32,7 +39,7 @@
 
 .tweet_content{
   font-size: 17px;
-  border: 1px solid grey;
+  border: 1px solid white;
   padding: 20px;
 
 }
