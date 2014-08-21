@@ -10,8 +10,6 @@ function request(method, url, data){
   })
 }
 
-
-
 function findNewPosts(){
   request("GET", "/posts?postId="+postId).success(function(data){
     // setting the last posts id to postId
@@ -26,91 +24,83 @@ function findNewPosts(){
 }
 
 function findLastPostId(){
-  var findLastPost = request("GET", "/posts").success(function(data){
-    // setting the last posts id to postId
-    console.log(data, count,'fisrst')
-    postId = data.latestpost
-    setInterval(findNewPosts, 6000);
-  });
+  // var findLastPost = request("GET", "/posts").success(function(data){
+  //   // setting the last posts id to postId
+  //   console.log(data, count,'fisrst')
+  //   postId = data.latestpost
+  //   setInterval(findNewPosts, 6000);
+  // });
 }
 
 findLastPostId()
 
-
 function updateLikes(button, post){
   console.log("button")
   if($(button).hasClass("liked_status")){
-    post.children('.likes').html(parseInt(post.children('.likes').html()) +1)
+    post.children('.post_second_col').children('.likes').html(parseInt(post.children('.post_second_col').children('.likes').html()) +1)
   }else{
-    post.children('.likes').html(parseInt(post.children('.likes').html()) -1)
+    post.children('.post_second_col').children('.likes').html(parseInt(post.children('.post_second_col').children('.likes').html()) -1)
   }
 }
 
 function updateHates(button, post){
   console.log("button")
   if($(button).hasClass("hated_status")){
-    post.children('.hates').html(parseInt(post.children('.hates').html()) +1)
-  }else{
-    post.children('.hates').html(parseInt(post.children('.hates').html()) -1)
-  }
+      post.children('.post_second_col').children('.hates').html(parseInt(post.children('.post_second_col').children('.hates').html()) +1)
+    }else{
+      post.children('.post_second_col').children('.hates').html(parseInt(post.children('.post_second_col').children('.hates').html()) -1)
+    }
 }
 
 function UpdateScoreIcon($row){
-  if($row.children('.user_score').html() > 0){
-    $($row.children('.score_icon').children('img')).attr('src', "https://blogs.glowscotland.org.uk/wl/stniniansps/files/2013/02/star_12.jpg")
+  if($row.children('.post_first_col').children('.user_score').html() > 0){
+    $($row.children('.post_first_col').children('.score_icon').children('img')).attr('src', "https://blogs.glowscotland.org.uk/wl/stniniansps/files/2013/02/star_12.jpg")
   }else{
-    $($row.children('.score_icon').children('img')).attr('src', "http://www.clickforsign.com/cw4/images/product_expanded/Danger-Warning-Trs-052.jpg")
+    $($row.children('.post_first_col').children('.score_icon').children('img')).attr('src', "http://www.clickforsign.com/cw4/images/product_expanded/Danger-Warning-Trs-052.jpg")
   }
 }
 
-
-function UpdateScoreForHate(button, post, table){
+function UpdateScoreForHate(button, post, feed){
   console.log("button")
   if($(button).hasClass("hated_status")){
-    table.children().each(function(){
+    feed.children().each(function(){
       $row = $(this)
-      if($($row.children('.name_td')).children('a').text()== $(post.children('.name_td')).children('a').text()){
-        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)}
+      if($($row.children('.post_first_col').children('.name_td')).children('a').text()== $(post.children('.post_first_col').children('.name_td')).children('a').text()){
+        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) -1)}
         UpdateScoreIcon($row)
     })
-  }else{table.children().each(function(){
+  }else{feed.children().each(function(){
       $row = $(this)
-      if($($row.children('.name_td')).children('a').text()== $(post.children('.name_td')).children('a').text()){
-        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)}
+      if($($row.children('.post_first_col').children('.name_td')).children('a').text()== $(post.children('.post_first_col').children('.name_td')).children('a').text()){
+        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) +1)}
         UpdateScoreIcon($row)
     })
   }
 }
 
-
-function UpdateScoreForLike(button, post, table){
+function UpdateScoreForLike(button, post, feed){
   console.log("button")
   if($(button).hasClass("liked_status")){
-    table.children().each(function(){
+    feed.children().each(function(){
       $row = $(this)
-      if($($row.children('.name_td')).children('a').text()== $(post.children('.name_td')).children('a').text()){
-        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)
+      if($($row.children('.post_first_col').children('.name_td')).children('a').text()== $(post.children('.post_first_col').children('.name_td')).children('a').text()){
+        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) -1)}
         UpdateScoreIcon($row)
-      }
     })
-  }else{table.children().each(function(){
+  }else{feed.children().each(function(){
       $row = $(this)
-      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
-        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)
+      if($($row.children('.post_first_col').children('.name_td')).children('a').text()== $(post.children('.post_first_col').children('.name_td')).children('a').text()){
+        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) +1)}
         UpdateScoreIcon($row)
-      }
     })
   }
- 
 }
-
-
 
 function toggleLike(){
   console.log("like")
   $this = $(this)
-  $post = $this.parent().parent()
-  $table = $post.parent()
+  $post = $this.parent().parent().parent()
+  $feed = $post.parent()
   id = parseInt($post.children('.id').html())
   request("POST", "/votes", {vote:{sentiment: true, post_id: id}
   }).success(function(){
@@ -118,17 +108,14 @@ function toggleLike(){
   }).success(function(){
     updateLikes($this, $post)
   }).success(function(){
-    UpdateScoreForLike($this, $post, $table)
+    UpdateScoreForLike($this, $post, $feed)
   })
 }
 
-
-
-
 function toggleHate(){
   $this = $(this)
-  $post = $this.parent().parent()
-  $table = $post.parent()
+  $post = $this.parent().parent().parent()
+  $feed = $post.parent()
   id = parseInt($post.children('.id').html())
   request("POST", "/votes", {vote:{sentiment: false, post_id: id}
   }).success(function(){
@@ -137,7 +124,7 @@ function toggleHate(){
   }).success(function(){
     updateHates($this, $post)
   }).success(function(){
-    UpdateScoreForHate($this, $post, $table)
+    UpdateScoreForHate($this, $post, $feed)
   })
 }
 

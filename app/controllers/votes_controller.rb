@@ -42,7 +42,6 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(params[:vote])
     @vote.user_id = current_user.id
-
     vote_exist = Vote.all.select do |vote|
       if vote.user_id == @vote.user_id
         if vote.post_id == @vote.post_id
