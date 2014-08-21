@@ -141,7 +141,14 @@ def numReposts(post)
   reposts
 end
 
-
+def getImage(user)
+  if user.profile_picture == nil
+    img = current_user.image
+  else
+    img = current_user.profile_picture
+  end
+  img
+end
 
 
 
