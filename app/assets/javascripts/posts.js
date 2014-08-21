@@ -17,7 +17,7 @@ function findNewPosts(){
     if(data.count > 0){
       count = count + data.count
     }
-    $('.new_post_count').text('You have '+count+' new post')
+    $('.new_post_count').text('You have '+count+' new posts')
     console.log(data, count,'second')
   });
   // $("<p>Johanna</p>").appendTo(".follow")

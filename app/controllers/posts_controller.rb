@@ -31,13 +31,35 @@ class PostsController < ApplicationController
 
     @q = Post.search(params[:q])
     @posts = @q.result(distinct: true)
-    # binding.pry
     count = nil 
     latestpost = Post.last.id
     lastpost = params[:postId]
+
     if lastpost
       count = latestpost.to_i - lastpost.to_i
     end  
+
+
+    # count = nil 
+    # latestpost_id = Post.last.id
+    # latestpost = Post.last
+    # lastpost_id = params[:postId]
+    # lastpost = params[:post]
+
+    # following = User.all.select do |user|
+    #   is_following = user.users.select do |following|
+    #     if following.id == current_user.id
+    #       following
+    #     end
+    #   end
+
+    #   if is_following.include? latestpost.user
+    #     if lastpost
+    #       count = latestpost_id.to_i - lastpost_id.to_i
+    #     end 
+    #   end 
+    # end
+
     # @p = User.search(params[:p])
     # @users = @p.result(distinct: true)
     respond_to do |format|
