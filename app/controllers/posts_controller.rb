@@ -34,18 +34,9 @@ class PostsController < ApplicationController
     # binding.pry
     count = nil 
     latestpost = Post.last.id
-    puts latestpost
     lastpost = params[:postId]
-    puts lastpost
     if lastpost
       count = latestpost.to_i - lastpost.to_i
-      puts params
-      puts "="* 90
-      puts lastpost.to_i
-      puts "="* 90
-      puts latestpost.to_i
-      puts "="* 90
-      puts count
     end  
     # @p = User.search(params[:p])
     # @users = @p.result(distinct: true)
