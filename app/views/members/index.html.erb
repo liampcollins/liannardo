@@ -2,7 +2,11 @@
 
    <% @users.each do |user| %>
     <%= link_to user.name, user %><br>
-    <%= user.profile_picture %><br>
+      <% if user.profile_picture == nil %>
+          <img id="prof_pic" src="<%= user.image %>" />
+        <% else %>
+          <img id="prof_pic" src="<%= user.profile_picture %>" />
+      <% end%>
     <%= user.bio %><br> 
      <br>
   <% end %>

@@ -2,11 +2,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @user.name %>'s Profile</h1>
-<% if @user.profile_picture == nil %>
-    <img id="prof_pic" src="<%= @user.image %>" />
-  <% else %>
-    <img id="prof_pic" src="<%= @user.profile_picture %>" />
-<% end%>
+<div class="left-side">
+  <% if @user.profile_picture == nil %>
+      <img id="prof_pic" src="<%= @user.image %>" />
+    <% else %>
+      <img id="prof_pic" src="<%= @user.profile_picture %>" />
+  <% end%>
+</div>
+<table class="list_own_posts">
 
 <br/>
 <% if @user.id == current_user.id %>
@@ -71,20 +74,18 @@
 <% current_user_and_following = following << current_user %>
 
 
-
-<table>
-  <tr>
-    
-    <th>Content</th>
-    <th>Author</th>
-    <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
-    <th><span class="glyphicon glyphicon-thumbs-down"></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<tr>
+  
+  <th>Content</th>
+  <th>Author</th>
+  <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
+  <th><span class="glyphicon glyphicon-thumbs-down"></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+</tr>
 
 
   <% @user.posts.each do |post_record| %>
