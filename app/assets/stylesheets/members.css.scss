@@ -9,11 +9,12 @@
   position: fixed;
   float: left;
   width: 40%;
-
-
-
-
 }
+ h1{
+  padding: 20px;
+ }
+
+
 
 .profile_feed{
   border: 1px solid black;
@@ -31,6 +32,9 @@
 
 .tweet_content{
   font-size: 17px;
+  border: 1px solid grey;
+  padding: 20px;
+
 }
 .edit_post{
   float: right;

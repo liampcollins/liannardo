@@ -48,6 +48,7 @@
         <div class="likes"><%= likes.length %></div>
         <div class="hates"><%= hates.length %></div>
         <div class="id" style="visibility:hidden;"><%= post.id %></div>
+        
 
 
 
@@ -59,7 +60,7 @@
           <% vote %>
           <% end %>
         <% end %>
-
+        
         <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
         <% if vote.length ==1 %>
           <% sentiment = vote.first.sentiment %>
@@ -77,6 +78,7 @@
           <% starting_liked_status = "unchecked_status"%>
           <% starting_hated_status = "unchecked_status"%>
         <% end %>
+
 <!--       </div>
       <div class="icons"> -->
         <div class="icon"><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></div>
