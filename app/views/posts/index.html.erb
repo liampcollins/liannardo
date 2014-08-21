@@ -12,6 +12,7 @@
   </p>
 <% end %>
 
+<p><a href="/posts/">Return to ALL POSTS page</a></p>
 
 <div id="sidebar_profile">
   <ul id = "sidebar_list" >
@@ -27,12 +28,9 @@
   </ul>
 </div>
 
-
-
 <div id="feed">
   <table>
-    <tr>
-      
+    <tr>      
       <th>Content</th>
       <th>Author</th>
       <th></th>
@@ -61,8 +59,6 @@
   <% current_user_and_following = following << current_user %>
   <!-- MOVE TO HELPER -->
 
-
-
   <!-- MOVE TO HELPER -->
   <!-- REMOVING RETWEETS THAT WERE INITIALLY TWEETEED BY USER OF SOMEONE THEY'RE FOLLOWING -->
   <% @original_post_ids = [] %>
@@ -80,16 +76,11 @@
   <% end %>
   <!-- MOVE TO HELPER -->
 
-
-
   <% current_user_reposts = find_reposts(current_user)%>
-
 
   <% current_user_and_following.each do |user| %>
     <% @posts.each do |post_record| %>
       <% if post_record.user_id == user.id%>
-
-
 
       <!-- MOVE TO HELPER -->
       <!--   ENSURING RETWEETS ARE LISTED AS WELL AS DIRECT TWEETS -->
