@@ -15,12 +15,12 @@ u2 = User.create!(name: 'Eduardo', email: 'eduardo@gmail.com', password:'passwor
 u3 = User.create!(name: 'Johanna', email: 'johanna@gmail.com', password:'password', password_confirmation: 'password', image:'https://media.licdn.com/mpr/mpr/wc_200_200/p/1/005/03c/3a6/18912f3.jpg' , bio:'purely awesome')
 u4 = User.create!(name: 'Mike', email: 'mike@gmail.com', password:'password', password_confirmation: 'password', image:'https://media.licdn.com/mpr/mpr/wc_200_200/p/1/005/03c/3a6/18912f3.jpg' , bio:'I teach code')
 
-p1 = Post.create!(content: 'I like boats')
-p2 = Post.create!(content: 'I hate cats')
-p3 = Post.create!(content: 'I like dogs')
-p4 = Post.create!(content: 'Nice weather')
-p5 = Post.create!(content: 'having an awesome day')
-p6 = Post.create!(content: 'need coffee')
+p1 = Post.create!(content: 'I like boats', sentiment: true, sentiment_prob: 75)
+p2 = Post.create!(content: 'I hate cats', sentiment: false, sentiment_prob: 80)
+p3 = Post.create!(content: 'I like dogs', sentiment: true, sentiment_prob: 80)
+p4 = Post.create!(content: 'Nice weather', sentiment: true, sentiment_prob: 70)
+p5 = Post.create!(content: 'having an awesome day', sentiment: true, sentiment_prob: 90)
+p6 = Post.create!(content: 'need coffee', sentiment: false, sentiment_prob: 55)
 
 u1.posts << [p1, p2]
 u2.posts << [p3, p4]

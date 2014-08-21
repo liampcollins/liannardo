@@ -5,12 +5,17 @@
 
 #feed {
   display: inline-block;
-  width: 60%
+  width: 60%;
+  
+  margin-left: 200px;
 }
 
 #sidebar_profile {
   display: inline-block;
-  width: 30%
+  width: 20%;
+  position: fixed;
+  top: 50px;
+  margin-top: 50px;
 }
 
 #nav_image {
@@ -53,5 +58,9 @@
 background-color: pink;  
 }
 
+
+.smiley {
+  width: 20px;
+}
 
 
