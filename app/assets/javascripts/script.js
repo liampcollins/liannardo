@@ -124,12 +124,6 @@ function updateFollow(){
 }
 
 
-function appendJohannaName(){
-  $("<p>Johanna</p>").appendTo(".follow")
-}
-
-setInterval(appendJohannaName, 3000);
-
 function toggleFollow(){
   $this = $(this)
   $user_id = parseInt($(this).next().text())
