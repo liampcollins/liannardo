@@ -1,16 +1,13 @@
 
-<h1>CHEERUPS FEED</h1>
-
-
-<%= search_form_for @q do |f| %>
+<%#= search_form_for @q do |f| %>
   <p>
-    <%= f.label :content_cont %>
-    <%= f.text_field :content_cont %>
+    <%#= f.label :content_cont %>
+    <%#= f.text_field :content_cont %>
   </p>
   <p>
-    <%= f.submit %>
+    <%#= f.submit %>
   </p>
-<% end %>
+<%# end %>
 
 
 <div id="sidebar_profile">
@@ -34,7 +31,9 @@
     <tr>
       
       <th>Content</th>
+      <th></th>
       <th>Author</th>
+      <th></th>
       <th></th>
       <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
       <th><span class="glyphicon glyphicon-thumbs-down"></th>
@@ -62,34 +61,13 @@
   <!-- MOVE TO HELPER -->
 
 
-
-  <!-- MOVE TO HELPER -->
-  <!-- REMOVING RETWEETS THAT WERE INITIALLY TWEETEED BY USER OF SOMEONE THEY'RE FOLLOWING -->
-  <% @original_post_ids = [] %>
-  <% @repost_ids = [] %>
-  <% @posts.each do |post_record| %>
-    <% current_user_and_following.each do |user| %>
-      <% if post_record.user_id == user.id%>
-        <% if post_record.repost_id %>
-          <% @repost_ids.push(post_record.repost_id)%>
-        <% else %>
-          <% @original_post_ids.push(post_record.id) %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
-  <!-- MOVE TO HELPER -->
-
-
-
+  <% @original_post_ids = getOriginalPostsIds(current_user_and_following)%>
+  <% @repost_ids = getRepostIds(current_user_and_following)%>
   <% current_user_reposts = find_reposts(current_user)%>
-
 
   <% current_user_and_following.each do |user| %>
     <% @posts.each do |post_record| %>
       <% if post_record.user_id == user.id%>
-
-
 
       <!-- MOVE TO HELPER -->
       <!--   ENSURING RETWEETS ARE LISTED AS WELL AS DIRECT TWEETS -->
@@ -109,15 +87,27 @@
         <% if post %>
           <tr>
             <td><%= post.content %></td>
-            <% if post_record.repost_id %>
-              <td><%= link_to user.name, member_path(user), :class=>"user_name"%>->RT-><%= link_to post.user.name, member_path(post.user) %></td>
+            <% if %>
+              <% post.sentiment == true %>
+              <td><img class="smiley" src="https://cdn1.iconfinder.com/data/icons/musthave/256/Positive.png"</td>
+            <% elsif %>
+              <% post.sentiment == false %>
+              <td><img class="smiley" src="https://cdn1.iconfinder.com/data/icons/musthave/256/Negative.png"</td>
             <% else %>
-              <td><%= link_to user.name, member_path(user), :class=>"user_name" %></td>
+              <td><img class="smiley" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/smiley_neutral-512.png"</td>
+            <% end %>
+            <% if post_record.repost_id %>
+              <td class="name_td"><%= link_to user.name, member_path(user), :class=>"user_name"%>->RT-><%= link_to post.user.name, member_path(post.user) %></td>
+            <% else %>
+              <td class="name_td"><%= link_to user.name, member_path(user), :class=>"user_name" %></td>
             <% end %>
             <%# binding.pry%>
-
-            <td class="user_score"><%= @user_score %></td>
-
+            <td class="user_score"><%= @user_score%></td>
+            <% if @user_score >0 %>
+              <td class="score_icon"><img class="smiley" src="https://blogs.glowscotland.org.uk/wl/stniniansps/files/2013/02/star_12.jpg"></td>
+            <% else %>
+              <td class="score_icon"><img class="smiley" src="http://www.clickforsign.com/cw4/images/product_expanded/Danger-Warning-Trs-052.jpg"></td>
+            <% end %>
 
 
             <!-- MOVE TO HELPER -->
@@ -174,8 +164,7 @@
             <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></td>
             <td><button class = "<%= starting_repost_status %> repost">Repost</button></td>
                    
-            <td><%= link_to 'Show', post %></td>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        
             <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
@@ -184,6 +173,4 @@
   <% end %>
   </table>
 </div>
-<br />
 
-<%= link_to 'New Post', new_post_path %>

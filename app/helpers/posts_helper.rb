@@ -26,5 +26,38 @@ module PostsHelper
     user_reposts
   end
 
-  
+
+  def getOriginalPostsIds(users)
+    @original_post_ids = []
+    @posts.each do |post_record|
+      users.each do |user| 
+        if post_record.user_id == user.id
+          if post_record.repost_id == nil
+          @original_post_ids.push(post_record.id)
+          end
+        end
+      end
+    end
+    @original_post_ids
+  end
+
+
+  def getRepostIds(users)
+    @repost_ids = []
+    @posts.each do |post_record|
+      users.each do |user| 
+        if post_record.user_id == user.id
+          if post_record.repost_id
+          @repost_ids.push(post_record.repost_id)
+          end
+        end
+      end
+    end
+    @repost_ids
+  end
 end
+
+
+
+
+

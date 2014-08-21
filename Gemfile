@@ -7,6 +7,8 @@ gem 'rails', '3.2.17'
 
 gem 'pg'
 gem 'obscenity'
+gem 'sentimentalizer'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,6 +32,7 @@ gem 'devise'
 gem 'oauth', '~> 0.4.7'
 gem 'ransack', '~> 1.2.3'
 gem 'carrierwave'
+gem 'high_voltage'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin-oauth2'
