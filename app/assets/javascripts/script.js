@@ -134,11 +134,11 @@ function updateFollow(){
 }
 
 
-function appendJohannaName(){
-  $("<p>Johanna</p>").appendTo(".follow")
-}
+// function appendJohannaName(){
+//   $("<p>Johanna</p>").appendTo(".follow")
+// }
 
-setInterval(appendJohannaName, 3000);
+// setInterval(appendJohannaName, 3000);
 
 function toggleFollow(){
   $this = $(this)
