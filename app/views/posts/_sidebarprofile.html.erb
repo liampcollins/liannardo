@@ -1,0 +1,15 @@
+<div id="sidebar_profile">
+  <ul id = "sidebar_list" >
+    <%# binding.pry %>
+    <li><% if current_user.profile_picture == nil %>
+          <img id="sidebar_image" src="<%= current_user.image %>" />
+        <% else %>
+            <img id="sidebar_image" src="<%= current_user.profile_picture %>" />
+          <% end%>
+    </li>
+    <li><%= current_user.name %></li>
+    <li><%= user_score(current_user)%></li>
+    <li class="score_icon"><img class="smiley" src=<%= scoreIcon(current_user)%>></li>
+    <li><%= current_user.bio %></li>
+  </ul>
+</div>

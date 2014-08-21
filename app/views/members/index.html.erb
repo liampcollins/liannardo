@@ -1,9 +1,13 @@
 <h1>All users</h1>
 
-  
    <% @users.each do |user| %>
     <%= link_to user.name, user %><br>
+    <%= user.profile_picture %><br>
+    <%= user.bio %><br> 
+     <br>
   <% end %>
+<br>
+
 </p>
 <b>Search for users:</b><%= search_form_for @q do |f| %>
   <p>
@@ -11,5 +15,7 @@
   </p>
   <p>
     <%= f.submit %>
-  </p>
+  </p>  
 <% end %>
+
+<p><a href="/members/">Return to ALL USERS page</a></p>
