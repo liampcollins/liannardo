@@ -1,25 +1,22 @@
 <h1>All users</h1>
 
-   <% @users.each do |user| %>
-    <%= link_to user.name, user %><br>
-      <% if user.profile_picture == nil %>
-          <img id="prof_pic" src="<%= user.image %>" />
-        <% else %>
-          <img id="prof_pic" src="<%= user.profile_picture %>" />
-      <% end%>
-    <%= user.bio %><br> 
-     <br>
+
+<div id="user_search_box">
+  <b>Search for users:</b><%= search_form_for @q do |f| %>
+      <%= f.text_field :name_cont %>
+      <%= f.submit %>
+
   <% end %>
-<br>
+</div>
 
-</p>
-<b>Search for users:</b><%= search_form_for @q do |f| %>
-  <p>
-    <%= f.text_field :name_cont %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>  
+<% @users.each do |user| %>
+  <div class="member_listing">
+    <div class="member_listing_name"><%= link_to user.name, user %></div>
+    <% if user.profile_picture==nil %>
+      <div class="memlistimage_div"><img class="member_listing_image" src="<%= user.image %>" /></div>
+    <% else %>
+      <div class="memlistimage_div"><img class="member_listing_image" src="<%= user.profile_picture %>" /></div>
+    <% end%>
+    <div class="member_listing_bio"><%= user.bio %></div> 
+   </div>
 <% end %>
-
-<p><a href="/members/">Return to ALL USERS page</a></p>

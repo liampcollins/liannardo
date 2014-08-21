@@ -30,10 +30,14 @@
 .tweet div {
   border: 1px solid green;
   float: left;
+  text-align: center;
 }
 .tweet {
   border: 1px solid black;
-  height: 100px;
+  height: 150px;
+  margin-bottom: 50px;
+  position:relative;
+  overflow:auto;
 }
 
 
@@ -41,25 +45,31 @@
 
 /*FEED STYLING*/
 .name_td {
+  float: left;
   width: 25%;
 }
 
 #feed_content_div {
   width: 50%;
+  height: 80%;
 
 }
 
 #feed_smiley_div {
   width: 25%;
+  height: 50%;
 }
 
 #feed_image_div {
   width: 25%;
-  max-height: 70%;
+  height: 70%;
+  clear: none;
+  
 }
 
 #post_image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .score_icon {
@@ -89,6 +99,41 @@
 
 
 
+
+.member_listing{
+  border: 1px solid black;
+  width: 45%;
+  margin:2%;
+  height: 200px;
+  float:left;
+}
+.member_listing_name{
+  font-size: 30px;
+}
+.member_listing_image{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.memlistimage_div{
+  width: 30%;
+  height: 70%;
+  display: inline-block;
+}
+
+.member_listing_bio{
+  width: 65%;
+  display: inline-block;
+}
+
+#user_search_box{
+  clear: both;
+}
+
+.member_listing_footer{
+  clear: both;
+}
 
 #sidebar_image {
  max-width: 200px; 
@@ -132,7 +177,10 @@ background-color: pink;
 
 
 .smiley {
-  width: 20px;
+  width: 60px;
+}
+.user_status {
+ height: 20px ; 
 }
 
 
