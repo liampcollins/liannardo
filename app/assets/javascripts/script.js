@@ -46,8 +46,18 @@ function updateLikes(button, post){
   }
 }
 
+// GERRYS CODE, WORKS BUT HAVE TO REFACTOR OTHER STUFF TO COPE
+// function updateLikes(button, post){
+//   console.log("button")
+//   if($(button).hasClass("liked_status")){
+//     post.prev().children(".likes").html(parseInt(post.prev().children(".likes").html()) +1)
+//   }else{
+//     post.prev().children(".likes").html(parseInt(post.prev().children(".likes").html()) -1)
+//   }
+// }
+
 function updateHates(button, post){
-  console.log("button")
+  console.log("button", button)
   if($(button).hasClass("hated_status")){
     post.children('.hates').html(parseInt(post.children('.hates').html()) +1)
   }else{
