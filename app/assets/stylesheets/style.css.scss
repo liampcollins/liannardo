@@ -1,8 +1,13 @@
+/* This one has the boxes that contain the content of the signin and signup pages */
+.box {
+  background-color: #edeaea;
+  font-family: 'Gloria Hallelujah', cursive;
+  float: left;
+  max-width: 320px;
+  margin-left: 50px; 
+}
 
-
-
-
-
-
-
-
+/* grabs the main background color */
+.main_background {
+  background-color: #edeaea;
+}
