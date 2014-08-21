@@ -25,6 +25,13 @@ function updateHates(button, post){
   }
 }
 
+function UpdateScoreIcon($row){
+  if($row.children('.user_score').html() > 0){
+    $($row.children('.score_icon').children('img')).attr('src', "https://blogs.glowscotland.org.uk/wl/stniniansps/files/2013/02/star_12.jpg")
+  }else{
+    $($row.children('.score_icon').children('img')).attr('src', "http://www.clickforsign.com/cw4/images/product_expanded/Danger-Warning-Trs-052.jpg")
+  }
+}
 
 
 function UpdateScoreForHate(button, post, table){
@@ -32,15 +39,15 @@ function UpdateScoreForHate(button, post, table){
   if($(button).hasClass("hated_status")){
     table.children().each(function(){
       $row = $(this)
-      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
-        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)
-      }
+      if($($row.children('.name_td')).children('a').text()== $(post.children('.name_td')).children('a').text()){
+        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)}
+        UpdateScoreIcon($row)
     })
   }else{table.children().each(function(){
       $row = $(this)
-      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
-        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)
-      }
+      if($($row.children('.name_td')).children('a').text()== $(post.children('.name_td')).children('a').text()){
+        $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)}
+        UpdateScoreIcon($row)
     })
   }
 }
@@ -51,17 +58,20 @@ function UpdateScoreForLike(button, post, table){
   if($(button).hasClass("liked_status")){
     table.children().each(function(){
       $row = $(this)
-      if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
+      if($($row.children('.name_td')).children('a').text()== $(post.children('.name_td')).children('a').text()){
         $row.children('.user_score').html(parseInt($row.children('.user_score').html()) +1)
+        UpdateScoreIcon($row)
       }
     })
   }else{table.children().each(function(){
       $row = $(this)
       if($($row.children('td')[1]).children('a').text()== $(post.children('td')[1]).children('a').text()){
         $row.children('.user_score').html(parseInt($row.children('.user_score').html()) -1)
+        UpdateScoreIcon($row)
       }
     })
   }
+ 
 }
 
 
@@ -124,11 +134,6 @@ function updateFollow(){
 }
 
 
-// function appendJohannaName(){
-//   $("<p>Johanna</p>").appendTo(".follow")
-// }
-
-// setInterval(appendJohannaName, 3000);
 
 function toggleFollow(){
   $this = $(this)

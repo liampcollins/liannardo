@@ -31,14 +31,27 @@ class PostsController < ApplicationController
 
     @q = Post.search(params[:q])
     @posts = @q.result(distinct: true)
-
+    # binding.pry
+    count = nil 
+    latestpost = Post.last.id
+    puts latestpost
+    lastpost = params[:postId]
+    puts lastpost
+    if lastpost
+      count = latestpost.to_i - lastpost.to_i
+      puts params
+      puts "="* 90
+      puts lastpost.to_i
+      puts "="* 90
+      puts latestpost.to_i
+      puts "="* 90
+      puts count
+    end  
     # @p = User.search(params[:p])
     # @users = @p.result(distinct: true)
-
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.json { render :json => {:latestpost => latestpost, :count => count} }
     end
   end
 
@@ -91,6 +104,15 @@ class PostsController < ApplicationController
       end
     else
       @post = Post.new(params[:post])
+      sentiment_data_json = Sentimentalizer.analyze(params[:post][:content])
+      sentiment_data = JSON.parse(sentiment_data_json)
+      sentiment_smiley = sentiment_data["sentiment"]
+      if sentiment_smiley == ":)"
+        @post.sentiment = true
+      else
+        @post.sentiment = false
+      end
+      @post.sentiment_prob = sentiment_data["probability"]*100
       @post.user_id = current_user.id
       @post.save
     end
