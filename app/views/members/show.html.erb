@@ -112,15 +112,15 @@
 
 
     <tr>
-      <td><%= post.content %></td>
+      <div><%= post.content %></div>
       <% if post_record.repost_id %>
-        <td>(RT)<%= link_to post.user.name, member_path(post.user) %></td>
+        <div>(RT)<%= link_to post.user.name, member_path(post.user) %></div>
       <% else %>
-        <td><%= link_to @user.name, member_path(@user) %></td>
+        <div><%= link_to @user.name, member_path(@user) %></div>
       <% end %>
-      <td class="likes"><%= likes.length %></td>
-      <td class="hates"><%= hates.length %></td>
-      <td class="id" style="visibility:hidden;"><%= post.id %></td>
+      <div class="likes"><%= likes.length %></div>
+      <div class="hates"><%= hates.length %></div>
+      <div class="id" style="visibility:hidden;"><%= post.id %></div>
 
 
 
@@ -148,12 +148,12 @@
         <% starting_liked_status = "unchecked_status"%>
         <% starting_hated_status = "unchecked_status"%>
       <% end %>
-      <td><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></td>
-      <td><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></td>
+      <div><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></div>
+      <div><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></div>
 
-      <td><%= link_to 'Show', post %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <div><%= link_to 'Show', post %></div>
+      <div><%= link_to 'Edit', edit_post_path(post) %></div>
+      <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
     </tr>    
   <% end %>
 </table>

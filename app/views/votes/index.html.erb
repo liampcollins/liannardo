@@ -10,10 +10,10 @@
 
 <% @votes.each do |vote| %>
   <tr>
-    <td><%= vote.sentiment %></td>
-    <td><%= link_to 'Show', vote %></td>
-    <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-    <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <div><%= vote.sentiment %></div>
+    <div><%= link_to 'Show', vote %></div>
+    <div><%= link_to 'Edit', edit_vote_path(vote) %></div>
+    <div><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></div>
   </tr>
 <% end %>
 </table>
