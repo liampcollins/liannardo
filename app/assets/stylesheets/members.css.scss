@@ -1,7 +1,24 @@
 *{
   box-sizing: border-box;
 }
-.left-sidebar{
+
+.profile_sidebar{
+  float: left;
+  width: 40%;
+  position: fixed;
+
+}
+
+.profile_feed{
+  float: right;
+  width: 60%;
+}
+
+#user_name{
+  height: 100%;
+}
+
+/*.left-sidebar{
   border: 1px solid black;
   display: block;
   padding: 20px;
@@ -52,14 +69,56 @@
   display: inline-block;
   float: right;
 }
-/*.glyphicon-thumbs-up{
+.glyphicon-thumbs-up{
   float: right;
 }
 .glyphicon-thumbs-down{
   float: right;
-}*/
+}
 .footer{
   display: inline-block;
 
   width: 100%;
 }
+
+
+/*Styling for profile page*/
+
+
+/*
+
+
+.member_listing{
+  border: 1px solid black;
+  width: 45%;
+  margin:2%;
+  height: 200px;
+  float:left;
+}
+.member_listing_name{
+  font-size: 30px;
+}
+.member_listing_image{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.memlistimage_div{
+  width: 30%;
+  height: 70%;
+  display: inline-block;
+}
+
+.member_listing_bio{
+  width: 65%;
+  display: inline-block;
+}
+
+#user_search_box{
+  clear: both;
+}
+
+.member_listing_footer{
+  clear: both;
+}*/

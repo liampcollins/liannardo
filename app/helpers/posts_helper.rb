@@ -151,5 +151,14 @@ def getImage(user)
 end
 
 
+def currentUserVotes(post)
+  votes = post.votes.select do |vote|
+    if vote.user_id == current_user.id
+      vote
+    end
+  end
+  votes
+end
+
 
 end

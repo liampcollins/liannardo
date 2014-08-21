@@ -46,19 +46,22 @@
 
 .post_first_col{
   display: inline-block;
-  width: 25%;
+  width: 24%;
   height: 100%;
+  border: 1px solid black;
 
 }
 .post_second_col{
   display: inline-block;
   width: 50%;
   height: 100%;
+  border: 1px solid black;
 }
 .post_third_col{
   display: inline-block;
-  width: 25%;
+  width: 24%;
   height: 100%;
+  border: 1px solid black;
 }
 
 .name_td {
@@ -84,6 +87,8 @@
 }
 
 #post_image {
+  height: 100%;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
 }
@@ -149,41 +154,6 @@
 
 
 
-
-.member_listing{
-  border: 1px solid black;
-  width: 45%;
-  margin:2%;
-  height: 200px;
-  float:left;
-}
-.member_listing_name{
-  font-size: 30px;
-}
-.member_listing_image{
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-}
-
-.memlistimage_div{
-  width: 30%;
-  height: 70%;
-  display: inline-block;
-}
-
-.member_listing_bio{
-  width: 65%;
-  display: inline-block;
-}
-
-#user_search_box{
-  clear: both;
-}
-
-.member_listing_footer{
-  clear: both;
-}
 
 #sidebar_image {
  max-width: 200px; 
