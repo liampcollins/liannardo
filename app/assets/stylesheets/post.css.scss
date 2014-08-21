@@ -27,44 +27,60 @@
 }
 
 
-.tweet div {
-  border: 1px solid green;
+.post div {
   float: left;
   text-align: center;
 }
-.tweet {
+.post {
   border: 1px solid black;
   height: 150px;
   margin-bottom: 50px;
   position:relative;
-  overflow:auto;
 }
 
 
 
 
 /*FEED STYLING*/
+
+
+.post_first_col{
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+
+}
+.post_second_col{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+}
+.post_third_col{
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+}
+
 .name_td {
   float: left;
-  width: 25%;
+  width: 100%;
 }
 
 #feed_content_div {
-  width: 50%;
-  height: 80%;
+  width: 100%;
+  height: 70%;
 
 }
 
 #feed_smiley_div {
-  width: 25%;
+  width: 100%;
   height: 50%;
 }
 
 #feed_image_div {
-  width: 25%;
   height: 70%;
   clear: none;
-  
+  margin-left: 20px;
 }
 
 #post_image {
@@ -73,16 +89,29 @@
 }
 
 .score_icon {
-  width: 10%
+  width: 50%
 }
 .user_score {
-  width: 10%
+  width: 50%
+}
+
+
+.feed_like_div{
+  width: 20%;
+  margin-left: 40px;
+}
+
+.feed_hate_div{
+  width: 20%;
+  margin-left: 20px;
 }
 
 #feed_like_button {
-  width: 10%
+  width: 100%
 }
-
+#feed_hate_button{
+  width: 100%
+}
 .likes{
   width: 10%
 }
@@ -90,8 +119,29 @@
 .hates{
   width: 10%
 }
-#feed_hate_button{
-  width: 10%
+
+
+.id{
+  height: 10px;
+}
+
+.repost_div{
+  width: 65%;
+  height: 35%;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.repost{
+  width: 100%;
+  height: 100%;
+}
+
+.reposts{
+  width: 25%;
+  height: 25%;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 
@@ -144,11 +194,6 @@
 #sidebar_list {
   list-style: none;
 }
-
-tr {
-  border: 1px solid black;
-}
-
 
 .unchecked_status {
   background-color: blue;
