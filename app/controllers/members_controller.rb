@@ -35,7 +35,7 @@ class MembersController < ApplicationController
   def update
     @user = User.find(params[:user][:user_id])
     #subscribing to user
-    binding.pry
+    #binding.pry
     if params[:user][:follow] == 'false'
       @user.users << current_user
     else params[:user][:follow] == 'true'
