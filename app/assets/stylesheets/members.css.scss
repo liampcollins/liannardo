@@ -1,9 +1,14 @@
 *{
   box-sizing: border-box;
   margin: 0px;  
-  padding: 0px; 
+  padding: 0px;
+
+}
+body{
+  background-color: #D1D1E0;
 }
 .left-sidebar{
+  background-color: white;
   border: 1px solid white;
   display: block;
   padding: 20px;
@@ -39,7 +44,7 @@
   width: 60%;
   min-width: 320px;
   display: block;
-
+  background-color: white;
 }
 .each_element{
   float: left;
