@@ -143,9 +143,9 @@ end
 
 def getImage(user)
   if user.profile_picture == nil
-    img = current_user.image
+    img = user.image
   else
-    img = current_user.profile_picture
+    img = user.profile_picture
   end
   img
 end

@@ -3,11 +3,7 @@
 
 <h1><%= @user.name %>'s Profile</h1>
 <div class="left-side">
-  <% if @user.profile_picture == nil %>
-      <img id="prof_pic" src="<%= @user.image %>" />
-    <% else %>
-      <img id="prof_pic" src="<%= @user.profile_picture %>" />
-  <% end%>
+<img id="prof_pic" src="<%= getImage(@user) %>" />
 </div>
 <table class="list_own_posts">
 
@@ -58,7 +54,7 @@
   <% end %>
 <% end %>
 
-
+<br>
    
 
 <% following = User.all.select do |user| %>
@@ -76,8 +72,8 @@
 
 <tr>
   
-  <th>Content</th>
-  <th>Author</th>
+  <th></th>
+  <th></th>
   <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
   <th><span class="glyphicon glyphicon-thumbs-down"></th>
   <th></th>
@@ -113,11 +109,11 @@
 
 
     <tr>
-      <td><%= post.content %></td>
+      <td><%= post.content %><tr></td>
       <% if post_record.repost_id %>
         <td>(RT)<%= link_to post.user.name, member_path(post.user) %></td>
       <% else %>
-        <td><%= link_to @user.name, member_path(@user) %></td>
+        <td></td>
       <% end %>
       <td class="likes"><%= likes.length %></td>
       <td class="hates"><%= hates.length %></td>
