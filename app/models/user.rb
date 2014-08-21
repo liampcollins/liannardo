@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
     :foreign_key => "publisher_id",
     :association_foreign_key => "follower_id")
 
+  validates :email,  uniqueness: true
+  validates :name, length: { in: 2..45 }
+  validates :bio, length: { maximum: 500 }
+  validates :password, length: { in: 6..20 }
+
 
   def self.from_omniauth(auth, signed_in_user=nil)
     if auth[:provider] == "twitter"

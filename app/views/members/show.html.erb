@@ -1,14 +1,12 @@
 
 <p id="notice"><%= notice %></p>
 
-
 <h1><%= @user.name %>'s Profile</h1>
 <% if @user.profile_picture == nil %>
     <img id="prof_pic" src="<%= @user.image %>" />
   <% else %>
     <img id="prof_pic" src="<%= @user.profile_picture %>" />
 <% end%>
-
 
 <br/>
 <% if @user.id == current_user.id %>
@@ -19,7 +17,6 @@
     <button class="follow not_following">Follow</button>
   <% end %>
 <% end %>
-
   
 <div class="following_user" style="display: none;"><%= @user.id %></div>
 <div class="current_user"><% current_user.id %></div>

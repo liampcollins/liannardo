@@ -31,14 +31,27 @@ class PostsController < ApplicationController
 
     @q = Post.search(params[:q])
     @posts = @q.result(distinct: true)
-
+    # binding.pry
+    count = nil 
+    latestpost = Post.last.id
+    puts latestpost
+    lastpost = params[:postId]
+    puts lastpost
+    if lastpost
+      count = latestpost.to_i - lastpost.to_i
+      puts params
+      puts "="* 90
+      puts lastpost.to_i
+      puts "="* 90
+      puts latestpost.to_i
+      puts "="* 90
+      puts count
+    end  
     # @p = User.search(params[:p])
     # @users = @p.result(distinct: true)
-
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.json { render :json => {:latestpost => latestpost, :count => count} }
     end
   end
 

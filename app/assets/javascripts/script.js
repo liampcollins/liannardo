@@ -134,11 +134,14 @@ function updateFollow(){
 }
 
 
+<<<<<<< HEAD
 // function appendJohannaName(){
 //   $("<p>Johanna</p>").appendTo(".follow")
 // }
 
 // setInterval(appendJohannaName, 3000);
+=======
+>>>>>>> 5eabb8c660fd125900dce8a4b8e17a3d4bfd43ab
 
 function toggleFollow(){
   $this = $(this)
