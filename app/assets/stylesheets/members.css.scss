@@ -3,17 +3,63 @@
 }
 .left-sidebar{
   border: 1px solid black;
-  display: inline-block;
+  display: block;
   padding: 20px;
   text-align: center;
+  position: fixed;
+  float: left;
+  width: 40%;
+
+
 
 
 }
 
 .profile_feed{
   border: 1px solid black;
-  display: inline-block;
+  display: block;
   padding: 20px;
   text-align: center;
+  float: right;
+  width: 60%;
 
+}
+.each_element{
+  float: left;
+
+}
+
+.tweet_content{
+  font-size: 17px;
+}
+.edit_post{
+  float: right;
+}
+.user_name{
+  float: left;
+}
+.votes{
+  display: inline-block;
+  float: right;
+
+
+}
+.icons{
+  display: inline-block;
+  float: right;
+}
+.glyphicon{
+  display: inline-block;
+  float: right;
+}
+/*.glyphicon-thumbs-up{
+  float: right;
+}
+.glyphicon-thumbs-down{
+  float: right;
+}*/
+.footer{
+  display: inline-block;
+
+  width: 100%;
 }
