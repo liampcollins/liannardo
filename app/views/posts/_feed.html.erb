@@ -15,11 +15,10 @@
 
         <% if post %>
           <div class="tweet">
-            
-            <div><img id="post_image" src="<%= getImage(post.user) %>" /></div>
-            <div><%= post.content %></div>
-            <div><img class="smiley" src=<%= sentimentIcon(post)%>></div>
             <div class="name_td"><%= link_to user.name, member_path(user), :class=>"user_name"%><%= ifRP(post_record, post)%><%=rpFrom(post_record, post) %></div>
+            <div id="feed_content_div"><%= post.content %></div>
+            <div id="feed_smiley_div"><img class="smiley" src=<%= sentimentIcon(post)%>></div>
+            <div id="feed_image_div"><img id="post_image" src="<%= getImage(post.user) %>" /></div>
             <div class="score_icon"><img class="smiley" src=<%= scoreIcon(user)%>></div>
             <div class="user_score"><%= @user_score%></div>
             
@@ -56,9 +55,9 @@
               <% starting_repost_status = "not_reposted"%>
             <% end %>
             
-            <div><button class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></div>
+            <div><button id="feed_like_button" class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button></div>
             <div class="likes"><%= numberOfLikes(post) %></div>
-            <div><button class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></div>
+            <div><button id="feed_hate_button" class = "<%= starting_hated_status %> hate"><span class="glyphicon glyphicon-thumbs-down"></span></button></button></div>
             <div class="hates"><%= numberOfHates(post) %></div>
             
             <div class="id" style="visibility:hidden;"><%= post.id %></div>
@@ -66,7 +65,6 @@
             <div class="reposts"><%= numReposts(post)%></div>
                    
             <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-          
           </div>
 
         <% end %>

@@ -1,7 +1,10 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+ 
+
 
 #feed {
   display: inline-block;
@@ -23,13 +26,75 @@
   height: 50px
 }
 
+
+.tweet div {
+  border: 1px solid green;
+  float: left;
+}
+.tweet {
+  border: 1px solid black;
+  height: 100px;
+}
+
+
+
+
+/*FEED STYLING*/
+.name_td {
+  width: 25%;
+}
+
+#feed_content_div {
+  width: 50%;
+
+}
+
+#feed_smiley_div {
+  width: 25%;
+}
+
+#feed_image_div {
+  width: 25%;
+  max-height: 70%;
+}
+
+#post_image {
+  width: 100%;
+}
+
+.score_icon {
+  width: 10%
+}
+.user_score {
+  width: 10%
+}
+
+#feed_like_button {
+  width: 10%
+}
+
+.likes{
+  width: 10%
+}
+
+.hates{
+  width: 10%
+}
+#feed_hate_button{
+  width: 10%
+}
+
+
+
+
+
+
+
 #sidebar_image {
  max-width: 200px; 
 }
 
-#post_image {
-  max-width: 100px;
-}
+
 
 #sidebar_list {
   list-style: none;
