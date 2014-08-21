@@ -134,6 +134,11 @@ function updateFollow(){
 }
 
 
+function appendJohannaName(){
+  $("<p>Johanna</p>").appendTo(".follow")
+}
+
+setInterval(appendJohannaName, 3000);
 
 function toggleFollow(){
   $this = $(this)
@@ -181,8 +186,9 @@ function postForm(e){
   request("POST", "/posts", {post:{content: content}}).success(console.log("success")).success(function(){
     appendNewPost($post)
   })
-
 }
+
+
   
 $(function(){
   $('.like').on('click', toggleLike);
