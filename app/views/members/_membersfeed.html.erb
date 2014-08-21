@@ -25,7 +25,7 @@
         <!-- Checking if one vote or two made and what type of vote if only one made. Adding classes depending on votes already made -->
         <!-- MOVE TO HELPER -->
         <% if votes.length ==1 %>
-          <% sentiment = vote.first.sentiment %>
+          <% sentiment = votes.first.sentiment %>
           <% if sentiment == true %>
             <% starting_liked_status = "liked_status"%>
             <% starting_hated_status = "unchecked_status"%>

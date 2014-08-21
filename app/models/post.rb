@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   has_many :votes
   has_one :repost, class_name: "Post"
 
-  validates :content,  obscenity: { sanitize: true, replacement: "woopsy" }, length: { in: 1..141 }
+  validates :content,  obscenity: { sanitize: true, replacement: "woopsy" }
 
 
 end
