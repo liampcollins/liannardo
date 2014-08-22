@@ -1,8 +1,31 @@
 *{
   box-sizing: border-box;
+  margin: 0px;  
+  padding: 0px;
+
 }
-.left-sidebar{
-  border: 1px solid white;
+body{
+  background-color: #D1D1E0;
+}
+
+.profile_sidebar{
+  float: left;
+  width: 40%;
+  position: fixed;
+
+}
+
+.profile_feed{
+  float: right;
+  width: 60%;
+}
+
+#user_name{
+  height: 100%;
+}
+
+/*.left-sidebar{
+  border: 1px solid black;
   display: block;
   padding: 20px;
   text-align: center;
@@ -10,10 +33,15 @@
   float: left;
   width: 40%;
   padding-bottom: 100px;
+  min-width: 320px;
 }
  h1{
   padding: 20px;
  }
+
+ 
+
+  
   .new_post_count{
     border: 1px solid white;
     text-align: center;
@@ -26,15 +54,32 @@
 .profile_feed{
   border: 1px solid white;
   display: block;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   float: right;
   width: 60%;
-
+  min-width: 320px;
+  display: block;
+  background-color: white;
 }
 .each_element{
   float: left;
 
+}
+
+@media only screen and (max-width: 960px){ 
+  .left-sidebar{
+    width: 50%;
+  }
+  .left-sidebar:last-child{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 640px){ 
+  .profile_feed{
+    width: 100%;
+  }
 }
 
 .tweet_content{
@@ -63,14 +108,56 @@
   display: inline-block;
   float: right;
 }
-/*.glyphicon-thumbs-up{
+.glyphicon-thumbs-up{
   float: right;
 }
 .glyphicon-thumbs-down{
   float: right;
-}*/
+}
 .footer{
   display: inline-block;
 
   width: 100%;
+}
+
+
+/*Styling for profile page*/
+
+
+
+
+
+.member_listing{
+  border: 1px solid black;
+  width: 45%;
+  margin:2%;
+  height: 200px;
+  float:left;
+}
+.member_listing_name{
+  font-size: 30px;
+}
+.member_listing_image{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.memlistimage_div{
+  width: 30%;
+  height: 70%;
+  display: inline-block;
+}
+
+.member_listing_bio{
+  width: 65%;
+  display: inline-block;
+}
+
+#user_search_box{
+  clear: both;
+}
+
+.member_listing_footer{
+  clear: both;
 }

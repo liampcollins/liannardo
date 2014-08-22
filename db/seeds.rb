@@ -9,37 +9,37 @@ User.delete_all
 Post.delete_all
 Vote.delete_all
 
-u1 = User.create!(name: 'Michael (Heisenberg) Pavling', email: 'heisenberg@gmail.com', password:'password', password_confirmation: 'password', bio:'When Walter White was a graduate student of chemistry at the California Institute of Technology, he conducted research on proton radiography that helped a team win a Nobel Prize in Chemistry. After graduate school, Walter founded the firm Gray Matter Technologies with Geraud Mathe, his former classmate and close friend from Paris, not France! Paris!')
+u1 = User.create!(name: 'Michael (Heisenberg) Pavling', email: 'heisenberg@gmail.com', password:'password', password_confirmation: 'password', bio:"When Walter White was a graduate student of chemistry. After graduate school, Walter founded the firm Gray Matter Technologies with Geraud Mathe, years later they ve been teaching the 'Cookbook' to London-based apprentices." )
 
-u2 = User.create!(name: 'Geraud Mathe', email: 'gerry@gmail.com', password:'password', password_confirmation: 'password', bio:'Self taught hacker, working with rails, sinatra, mongodb, redis SQL... Geraud, or Gerry as his students call him is most known for his "Top of the Mountain" dance routine, only observed following top-class code, or, past 2am at the Gunmakers.')
+u2 = User.create!(name: 'Geraud Mathe', email: 'gerry@gmail.com', password:'password', password_confirmation: 'password', bio:'Self taught hacker, working with rails, sinatra, mongodb, redis SQL... Geraud is rarely DRY, and was found climbing out his window this Friday morning.')
 
-u3 = User.create!(name: 'Mathilda Thompson', email: 'mathilda@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
 
-u4 = User.create!(name: 'Mike Harris', email: 'mike@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci.')
+u3 = User.create!(name: 'Mathilda Thompson', email: 'mathilda@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u5 = User.create!(name: 'Jarkyn Soltobaeva', email: 'jarkyn@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
 
-u6 = User.create!(name: 'Julien Deslangles-Blanch', email: 'julien@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u4 = User.create!(name: 'Mike Harris', email: 'mike@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u7 = User.create!(name: 'Johanna Carlberg', email: 'johanna@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci.')
 
-u8 = User.create!(name: 'Toby Merlet', email: 'toby@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u5 = User.create!(name: 'Jarkyn Soltobaeva', email: 'jarkyn@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u9 = User.create!(name: 'Liam Collins', email: 'liam@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u6 = User.create!(name: 'Julien Deslangles-Blanch', email: 'julien@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u10 = User.create!(name: 'Tobias Hale', email: 'tobias@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u7 = User.create!(name: 'Johanna Carlberg', email: 'johanna@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u11 = User.create!(name: 'Graham Curl', email: 'graham@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u8 = User.create!(name: 'Toby Merlet', email: 'toby@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u12 = User.create!(name: 'Gwen Au', email: 'gwen@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u9 = User.create!(name: 'Liam Collins', email: 'liam@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. ')
 
-u13 = User.create!(name: 'Tom Walker', email: 'tom@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u10 = User.create!(name: 'Tobias Hale', email: 'tobias@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u14 = User.create!(name: 'Sam Maton', email: 'sam@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u11 = User.create!(name: 'Graham Curl', email: 'graham@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u15 = User.create!(name: 'David Rees', email: 'david@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u12 = User.create!(name: 'Gwen Au', email: 'gwen@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
 
-u16 = User.create!(name: 'Gareth Lee', email: 'gareth@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dapibus tincidunt nisl sodales fermentum. Nam quis ligula sit amet eros venenatis porta at a orci. ')
+u13 = User.create!(name: 'Tom Walker', email: 'tom@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
+
+u14 = User.create!(name: 'Sam Maton', email: 'sam@gmail.com', password:'password', password_confirmation: 'password', bio:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id fringilla nisi. Curabitur nisi lacus, suscipit quis mauris ac, aliquam suscipit ipsum. Pellentesque dui tortor, rhoncus eget cursus vel, porta vel enim.')
+
 
 
 
@@ -49,7 +49,7 @@ p2 = Post.create!(content: 'I am the one who knocks.', sentiment: false, sentime
 p3 = Post.create!(content: "I'm not feeling well today, I slept like 7 hours last night, its not me man.", sentiment: true, sentiment_prob: 80)
 p4 = Post.create!(content: 'BOOOOM!!! GIF: Top of the Mountain!! Guys, let me explain,  Thursday at noon is the Top of the Top of the Mountain..', sentiment: true, sentiment_prob: 70)
 
-p5 = Post.create!(content: "Today is the 100 annivarsary of the start of the First World War"), sentiment: true, sentiment_prob: 90)
+p5 = Post.create!(content: "Today is the 100 annivarsary of the start of the First World War", sentiment: true, sentiment_prob: 90)
 p6 = Post.create!(content: 'Indentation! Indentation! You got to take care of the Indentation!', sentiment: false, sentiment_prob: 55)
 
 p7 = Post.create!(content: 'I hold a Guiness World Record', sentiment: true, sentiment_prob: 75)
@@ -68,7 +68,7 @@ p15 = Post.create!(content: "In Scotland they say I'm French, and in France that
 p16 = Post.create!(content: 'I was destroyed in table tennis by Eduardo', sentiment: true, sentiment_prob: 70)
 
 p17 = Post.create!(content: 'One tiny <div> destroyed the entire JS, had to start all over!', sentiment: true, sentiment_prob: 90)
-p18 = Post.create!(content: 'I like cats', sentiment: false, sentiment_prob: 55)
+p18 = Post.create!(content: 'I really like cats', sentiment: false, sentiment_prob: 55)
 
 p19 = Post.create!(content: "I've run into this app called Tinder, look check it out.. that girl is waiting for me in Camden.., I mean I need a place to stay!" , sentiment: true, sentiment_prob: 75)
 p20 = Post.create!(content: 'Oooh to, oooh to be, Oooh to, oooh to be, Oooh to, ooh to be, Oooh to be a Goo-ner!', sentiment: false, sentiment_prob: 80)
@@ -87,7 +87,6 @@ p28 = Post.create!(content: "I wonder if I've already secured the 'longest commu
 
 
 
-
 u1.posts << [p1, p2]
 u2.posts << [p3, p4]
 u3.posts << [p5, p6]
@@ -102,6 +101,7 @@ u11.posts << [p21, p22]
 u12.posts << [p23, p24]
 u13.posts << [p25, p26]
 u14.posts << [p27, p28]
+
 
 
 u1.users << [u2, u3, u4]

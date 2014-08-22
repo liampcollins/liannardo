@@ -84,13 +84,13 @@ function UpdateScoreForLike(button, post, feed){
     feed.children().each(function(){
       $row = $(this)
       if($($row.children('.post_first_col').children('.name_td')).children('a').text()== $(post.children('.post_first_col').children('.name_td')).children('a').text()){
-        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) -1)}
+        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) +1)}
         UpdateScoreIcon($row)
     })
   }else{feed.children().each(function(){
       $row = $(this)
       if($($row.children('.post_first_col').children('.name_td')).children('a').text()== $(post.children('.post_first_col').children('.name_td')).children('a').text()){
-        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) +1)}
+        $row.children('.post_first_col').children('.user_score').html(parseInt($row.children('.post_first_col').children('.user_score').html()) -1)}
         UpdateScoreIcon($row)
     })
   }
@@ -170,16 +170,16 @@ function toggleFollow(){
 function updateReposts(button, post){
   console.log("button")
   if($(button).hasClass("reposted")){
-    post.children('.reposts').html(parseInt(post.children('.reposts').html()) +1)
+    post.children('.post_third_col').children('.reposts').html(parseInt(post.children('.post_third_col').children('.reposts').html()) +1)
   }else{
-    post.children('.reposts').html(parseInt(post.children('.reposts').html()) -1)
+    post.children('.post_third_col').children('.reposts').html(parseInt(post.children('.post_third_col').children('.reposts').html()) -1)
   }
 }
 
 function rePost(){
   console.log("respost")
   $this = $(this)
-  $post = $this.parent().parent()
+  $post = $this.parent().parent().parent()
   id = parseInt($post.children('.id').html())
   request("POST", "/posts", {post:{repost_id: id}}).success(console.log("success")).success(function(){
     $this.toggleClass("not_reposted").toggleClass("reposted")
