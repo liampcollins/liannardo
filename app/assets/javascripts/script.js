@@ -20,6 +20,8 @@ function findNewPosts(){
   })
 }
 
+
+
 function checkForNewPosts(){
     setInterval(findNewPosts, 6000);
 }
