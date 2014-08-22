@@ -33,10 +33,6 @@ class PostsController < ApplicationController
 
     @q = Post.search(params[:q])
     @posts = @q.result(distinct: true)
-    # @posts.order("created_at DESC")
-    # @posts.order{ |k| k["id"] }
-
-
     last_post = Post.last
     if last_post.user.users.include?(current_user)
       if Time.now - Post.last.created_at < 3 
