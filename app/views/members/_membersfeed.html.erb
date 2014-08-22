@@ -15,6 +15,7 @@
           <div id="user_name"><%= link_to @user.name, member_path(@user) %>
           </div>  
         <% end %>
+        
       </div>
       <div class="post_second_col">
         <div class="feed_content_div"><%= post.content %>
@@ -40,6 +41,7 @@
           <% starting_liked_status = "unchecked_status"%>
           <% starting_hated_status = "unchecked_status"%>
         <% end %>
+
         <!-- MOVE TO HELPER -->
         <div class="feed_like_div">
           <button id="feed_like_button" class = "<%= starting_liked_status %> like"><span class="glyphicon glyphicon-thumbs-up"></span></button>
@@ -52,16 +54,7 @@
         <div class="hates"><%= numberOfHates(post) %></div>
         <div class="id" style="visibility:hidden;">
           <%= post.id %>
-        </div>
-      </div>
-
-        <div class="post_third_col">
-          <div id="feed_smiley_div"><img class="smiley" src=<%= sentimentIcon(post)%>>
-          </div>        
-          <div class="edit_post"><%= link_to 'Show', post %></div>
-          <div class="edit_post"><%= link_to 'Edit', edit_post_path(post) %></div>
-          <div class="edit_post"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        </div>
+        </div></div>
 
 
 

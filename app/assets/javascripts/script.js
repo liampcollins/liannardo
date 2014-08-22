@@ -20,16 +20,13 @@ function findNewPosts(){
   })
 }
 
-function findLastPostId(){
-  // var findLastPost = request("GET", "/posts").success(function(data){
-  //   // setting the last posts id to postId
-  //   console.log(data, count,'fisrst')
-  //   postId = data.latestpost
+
+
+function checkForNewPosts(){
     setInterval(findNewPosts, 6000);
-  // });
 }
 
-findLastPostId()
+checkForNewPosts()
 
 function updateLikes(button, post){
   console.log("button")
@@ -40,8 +37,18 @@ function updateLikes(button, post){
   }
 }
 
+// GERRYS CODE, WORKS BUT HAVE TO REFACTOR OTHER STUFF TO COPE
+// function updateLikes(button, post){
+//   console.log("button")
+//   if($(button).hasClass("liked_status")){
+//     post.prev().children(".likes").html(parseInt(post.prev().children(".likes").html()) +1)
+//   }else{
+//     post.prev().children(".likes").html(parseInt(post.prev().children(".likes").html()) -1)
+//   }
+// }
+
 function updateHates(button, post){
-  console.log("button")
+  console.log("button", button)
   if($(button).hasClass("hated_status")){
       post.children('.post_second_col').children('.hates').html(parseInt(post.children('.post_second_col').children('.hates').html()) +1)
     }else{

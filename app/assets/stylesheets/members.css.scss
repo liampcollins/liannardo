@@ -5,42 +5,62 @@
 
 }
 body{
-  background-color: #D1D1E0;
+  background-color: #f5f5f8;
 }
 
 .profile_sidebar{
   float: left;
   width: 40%;
   position: fixed;
-
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 100px;
+  border-radius: 5px;
+  min-width: 320px;
+  display: block;
+  border: 1px solid #f5f5f8;
 }
+
 
 .profile_feed{
   float: right;
   width: 60%;
+  border: 1px solid #f5f5f8;
 }
+
+.profile_post{
+  border: 1px solid #f5f5f8;
+  height: 125px;
+  background-color: white;
+  border-radius: 5px;
+}
+
 
 #user_name{
   height: 100%;
+  font-size: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 30px;
 }
 
-/*.left-sidebar{
-  border: 1px solid black;
-  display: block;
-  padding: 20px;
-  text-align: center;
-  position: fixed;
-  float: left;
-  width: 40%;
-  padding-bottom: 100px;
-  min-width: 320px;
+
+
+.member_listing{
+  background-color: white;
+  border-radius: 5px;
 }
  h1{
   padding: 20px;
  }
 
- 
-
+.feed_content_div{
+  padding-top: 20px;
+  text-align: center;
+ }
+/*
   
   .new_post_count{
     border: 1px solid white;
@@ -57,7 +77,8 @@ body{
   padding: 30px;
   text-align: center;
   float: right;
-  width: 60%;
+  
+  height: 125px;
   min-width: 320px;
   display: block;
   background-color: white;
@@ -128,11 +149,13 @@ body{
 
 
 .member_listing{
-  border: 1px solid black;
+  border: 0px solid black;
   width: 45%;
   margin:2%;
   height: 200px;
   float:left;
+  background-color: white;
+  text-align: center;
 }
 .member_listing_name{
   font-size: 30px;
@@ -144,9 +167,10 @@ body{
 }
 
 .memlistimage_div{
-  width: 30%;
-  height: 70%;
+  width: 25%;
+  height: 60%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .member_listing_bio{
