@@ -9,8 +9,9 @@
 #feed {
   display: inline-block;
   width: 60%;
-  
+  margin-top: 30px;
   margin-left: 200px;
+  background-color: white;
 }
 
 #sidebar_profile {
@@ -19,6 +20,7 @@
   position: fixed;
   top: 50px;
   margin-top: 50px;
+  background-color: white;
 }
 
 #nav_image {
@@ -26,6 +28,10 @@
   height: 50px
 }
 
+#sidebar_image{
+  padding: 30px;
+  size: 50px;
+}
 
 .post div {
   float: left;
@@ -162,6 +168,7 @@
 
 #sidebar_image {
  max-width: 200px; 
+
 }
 
 #prof_pic{
@@ -173,6 +180,7 @@
 
 #sidebar_list {
   list-style: none;
+  text-align: center;
 }
 
 .unchecked_status {
@@ -201,9 +209,17 @@
 background-color: #D1D1E0;  
 }
 
+.new_post_count{
+  position: fixed;
+  display: inline-block;
+  float: right;
+  background-color: white;
+  padding-left: 32px;
+  padding-right: 32px;
+}
 
 .smiley {
-  width: 60px;
+  width: 40px;
 }
 .user_status {
  height: 20px ;
