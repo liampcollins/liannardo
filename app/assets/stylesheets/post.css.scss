@@ -94,10 +94,15 @@
 }
 
 .score_icon {
-  width: 50%
+  width: 50px;
+  margin: 0px;
+  display: inline-block;
+
 }
 .user_score {
-  width: 50%
+  width: 50%;
+  margin: 0;
+  display: inline-block;
 }
 
 
@@ -201,7 +206,10 @@ background-color: #D1D1E0;
   width: 60px;
 }
 .user_status {
- height: 20px ; 
+ height: 20px ;
+ width: 20px; 
+ display: inline-block;
+margin: 0px;
 }
 
 
