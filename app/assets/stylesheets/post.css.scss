@@ -10,13 +10,16 @@
   display: inline-block;
   width: 60%;
   margin-top: 30px;
-  margin-left: 200px;
+  margin-left: 250px;
   background-color: white;
+  border: 0px white solid;
+  border-radius: 20px;
+
 }
 
 #sidebar_profile {
   display: inline-block;
-  width: 20%;
+  width: 25%;
   position: fixed;
   top: 50px;
   margin-top: 50px;
@@ -38,10 +41,12 @@
   text-align: center;
 }
 .post {
-  border: 1px solid black;
+  border-bottom: 5px solid #f5f5f8; 
   height: 150px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   position:relative;
+  padding: 30px;
+  padding-bottom: 50px;
 }
 
 
@@ -54,18 +59,17 @@
   display: inline-block;
   width: 30%;
   height: 100%;
-/*  border: 1px solid black;*/
   vertical-align: top;
+  vertical-align: top;
+text-align: center;
 
-
-}
 .post_second_col{
   display: inline-block;
   width: 69%;
   height: 100%;
+
 /*  border: 1px solid black;*/
 
-}
 /*.post_third_col{
   display: inline-block;
   width: 24%;
@@ -94,25 +98,26 @@
 
 #feed_image_div {
   height: 70%;
+  width: 90%;
   clear: none;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
 
 #post_image {
-  height: 100%;
-  width: 100%;
   max-width: 100%;
   max-height: 100%;
 }
 
 .score_icon {
-  width: 50px;
-  margin: 0px;
+  width: 30px;
+  margin-left: 40px;
   display: inline-block;
 
 }
 .user_score {
-  width: 50%;
+  width: 20%;
   margin: 0;
   display: inline-block;
 }
@@ -228,7 +233,7 @@ background-color: #D1D1E0;
   float: right;
   background-color: white;
   padding-left: 32px;
-  padding-right: 32px;
+  padding-right: 80px;
 }
 
 .smiley {
