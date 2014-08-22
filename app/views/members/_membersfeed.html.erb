@@ -9,10 +9,10 @@
 
       <div class="post_first_col">
         <% if post_record.repost_id %>
-          <div id="user_name">(RT)<%= link_to post.user.name, member_path(post.user) %>
+          <div id="user_profile_name">(RT)<%= link_to post.user.name, member_path(post.user) %>
           </div>
         <% else %>
-          <div id="user_name"><%= link_to @user.name, member_path(@user) %>
+          <div id="user_profile_name"><%= link_to @user.name, member_path(@user) %>
           </div>  
         <% end %>
         
