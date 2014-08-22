@@ -7,6 +7,8 @@
       <%= f.submit %>
 
   <% end %>
+
+  
 </div>
 
 <% @users.each do |user| %>
@@ -14,6 +16,7 @@
     <div class="member_listing_name"><%= link_to user.name, user %></div>
     <% if user.profile_picture==nil %>
       <div class="memlistimage_div"><img class="member_listing_image" src="<%= user.image %>" /></div>
+
     <% else %>
       <div class="memlistimage_div"><img class="member_listing_image" src="<%= user.profile_picture %>" /></div>
     <% end%>

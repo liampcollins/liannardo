@@ -9,8 +9,9 @@
 #feed {
   display: inline-block;
   width: 60%;
-  
+  margin-top: 30px;
   margin-left: 200px;
+  background-color: white;
 }
 
 #sidebar_profile {
@@ -19,6 +20,7 @@
   position: fixed;
   top: 50px;
   margin-top: 50px;
+  background-color: white;
 }
 
 #nav_image {
@@ -26,132 +28,173 @@
   height: 50px
 }
 
+#sidebar_image{
+  padding: 30px;
+  size: 50px;
+}
 
-.tweet div {
-  border: 1px solid green;
+.post div {
   float: left;
   text-align: center;
 }
-.tweet {
+.post {
   border: 1px solid black;
   height: 150px;
   margin-bottom: 50px;
   position:relative;
-  overflow:auto;
 }
 
 
 
 
 /*FEED STYLING*/
+
+
+.post_first_col{
+  display: inline-block;
+  width: 24%;
+  height: 100%;
+  border: 1px solid black;
+  vertical-align: top;
+}
+.post_second_col{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  border: 1px solid black;
+}
+.post_third_col{
+  display: inline-block;
+  width: 24%;
+  height: 100%;
+  border: 1px solid black;
+}
+
 .name_td {
   float: left;
-  width: 25%;
+  width: 100%;
 }
 
 #feed_content_div {
-  width: 50%;
-  height: 80%;
-
+  width: 100%;
+  height: 70%;
+}
+.feed_content_div {
+  width: 100%;
+  height: 64%;
 }
 
 #feed_smiley_div {
-  width: 25%;
+  width: 100%;
   height: 50%;
 }
 
 #feed_image_div {
-  width: 25%;
   height: 70%;
   clear: none;
-  
+  margin-left: 20px;
 }
 
 #post_image {
+  height: 100%;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
 }
 
 .score_icon {
-  width: 10%
+  width: 50px;
+  margin: 0px;
+  display: inline-block;
+
 }
 .user_score {
-  width: 10%
+  width: 50%;
+  margin: 0;
+  display: inline-block;
+}
+
+
+.feed_like_div{
+  width: 20%;
+  margin-left: 40px;
+  display: inline-block;
+
+}
+
+.feed_hate_div{
+  width: 20%;
+  margin-left: 20px;
+  display: inline-block;
 }
 
 #feed_like_button {
-  width: 10%
+  width: 100%
 }
-
+#feed_hate_button{
+  width: 100%
+}
 .likes{
-  width: 10%
+  width: 10%;
+  display: inline-block;
+
 }
 
 .hates{
-  width: 10%
+  width: 10%;
+  display: inline-block;
+
 }
-#feed_hate_button{
-  width: 10%
+
+
+.id{
+  height: 10px;
 }
 
-
-
-
-
-
-
-.member_listing{
-  border: 1px solid black;
-  width: 45%;
-  margin:2%;
-  height: 200px;
-  float:left;
+.repost_div{
+  width: 65%;
+  height: 35%;
+  margin-left: 10px;
+  margin-top: 10px;
 }
-.member_listing_name{
-  font-size: 30px;
-}
-.member_listing_image{
+
+.repost{
   width: 100%;
   height: 100%;
-  display: inline-block;
 }
 
-.memlistimage_div{
-  width: 30%;
-  height: 70%;
-  display: inline-block;
+.reposts{
+  width: 25%;
+  height: 25%;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
-.member_listing_bio{
-  width: 65%;
-  display: inline-block;
-}
 
-#user_search_box{
-  clear: both;
-}
 
-.member_listing_footer{
-  clear: both;
-}
+
+
+
 
 #sidebar_image {
  max-width: 200px; 
+
+}
+
+#prof_pic{
+  width: 100px;
+  height: 100px;
 }
 
 
 
 #sidebar_list {
   list-style: none;
+  text-align: center;
 }
-
-tr {
-  border: 1px solid black;
-}
-
 
 .unchecked_status {
-  background-color: blue;
+  background-color: white;
 }
 .hated_status {
   background-color: red;
@@ -163,24 +206,36 @@ tr {
 }
 
 .following {
-  background-color: pink;
+  background-color: #6699FF;
+
 }
 
 
 .not_reposted{
-  background-color: grey;
+  background-color: white;
 }
 
 .reposted {
-background-color: pink;  
+background-color: #D1D1E0;  
 }
 
+.new_post_count{
+  position: fixed;
+  display: inline-block;
+  float: right;
+  background-color: white;
+  padding-left: 32px;
+  padding-right: 32px;
+}
 
 .smiley {
-  width: 60px;
+  width: 40px;
 }
 .user_status {
- height: 20px ; 
+ height: 20px ;
+ width: 20px; 
+ display: inline-block;
+margin: 0px;
 }
 
 

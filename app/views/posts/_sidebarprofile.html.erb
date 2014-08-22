@@ -1,11 +1,13 @@
 <div id="sidebar_profile">
-  <ul id = "sidebar_list" >
+  <div id = "sidebar_list" >
     <%# binding.pry %>
-    <li><img id="sidebar_image" src="<%= getImage(current_user) %>" />
-    </li>
-    <li><%= current_user.name %></li>
-    <li><%= user_score(current_user)%></li>
-    <li class="score_icon"><img class="smiley" src=<%= scoreIcon(current_user)%>></li>
-    <li><%= current_user.bio %></li>
-  </ul>
+    <div><img id="sidebar_image" src="<%= getImage(current_user) %>" />
+
+
+    </div>
+    <div><%= current_user.name %></div></br>
+    <div class="user_score"><%= user_score(current_user)%></div>
+    <div class="score_icon"><img class="user_status" src=<%= scoreIcon(current_user)%>></div>
+    <li><%= current_user.bio %></div>
+  </div>
 </div>

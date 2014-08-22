@@ -1,13 +1,96 @@
 /* This one has the boxes that contain the content of the signin and signup pages */
 .box {
-  background-color: #edeaea;
+
+  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(0, 74, 178, 0.99);
+
+
   font-family: 'Gloria Hallelujah', cursive;
-  float: left;
+  font-size: 15px;
+  float: right;
   max-width: 320px;
-  margin-left: 50px; 
+  margin-top: 25px;
+  margin-right: 60px; 
+  border-style:dashed;
+  padding: 0px 17px 17px 17px;
 }
 
-/* grabs the main background color */
-.main_background {
-  background-color: #edeaea;
+
+.box2 {
+  background-color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.88);
+  color: rgba(0, 74, 178, 0.99);
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 14px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 15px;
+  border-style:dashed;
+  padding: 17px 17px 17px 17px;
 }
+
+
+// .excludes_button_color{
+//   color: black;
+// }
+
+#youtube {
+    position:absolute;
+    z-index:-1000;
+    width:101%;
+    height: 120%;
+    top:0;
+    left: 0;  
+  }
+
+  .text_bs {
+ 
+  color: black;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 24px;
+  float: left;
+  max-width: 700px;
+  margin-left: 320px; 
+  border-style:dashed;
+  padding: 0px 17px 17px 17px;
+  }
+
+
+.darkblue_for_logins {
+  color: rgba(0, 74, 178, 0.8);
+}
+
+
+// #controls button {
+//   padding: 10px 20px;
+//   font-family: Helvetica, Arial,sans-serif;
+//   font-size: 20px;
+//   line-height: 20px;
+//   color: #000000;
+//   background: #ffffff;
+//   border: 0;
+//   border-top-color: initial;
+//   border-top-style: initial;
+//   border-top-width: 0px;
+//   border-right-color: initial;
+//   border-right-style: initial;
+//   border-right-width: 0px;
+//   border-bottom-color: initial;
+//   border-bottom-style: initial;
+//   border-bottom-width: 0px;
+//   border-left-color: initial;
+//   border-left-style: initial;
+//   border-left-width: 0px;
+// }
+
+
+// #videocontainer {
+//     position:absolute;
+//     z-index:-1000;
+//     width:101%;
+//     height: 120%;
+//     top:0;
+//     left: 0;
+//   }
+

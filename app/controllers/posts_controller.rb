@@ -29,36 +29,31 @@ class PostsController < ApplicationController
 
   def index
 
+    
+
     @q = Post.search(params[:q])
     @posts = @q.result(distinct: true)
-    count = nil 
-    latestpost = Post.last.id
-    lastpost = params[:postId]
+    last_post = Post.last
+    if last_post.user.users.include?(current_user)
+      if Time.now - Post.last.created_at < 3 
+        @count = 1
+      else
+        @count = 0
+      end
+    else
+      @count = 0
+    end
 
-    if lastpost
-      count = latestpost.to_i - lastpost.to_i
-    end  
-
-    # @q = Post.search(params[:q])
-    # @posts = @q.result(distinct: true)
-    # count = nil 
-    # latestpost = Post.last.id
-    # lastpost = params[:postId]
-    # if params[:postId]
-    #   thenewpost = Post.find(params[:postId])
-    #   theusers= current_user.users.map{|u| u.id}
-    #   if theusers.include?(thenewpost.user_id) 
-    #     if lastpost
-    #       count = latestpost.to_i - lastpost.to_i
-    #     end  
-    #   end
-    # end
     
     # @p = User.search(params[:p])
     # @users = @p.result(distinct: true)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:latestpost => latestpost, :count => count} }
+      if @count>0
+      format.json { render :json => @posts}
+      else
+      format.json { render :json => @count}
+      end
     end
   end
 
