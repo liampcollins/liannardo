@@ -11,16 +11,13 @@ function request(method, url, data){
 }
 
 function findNewPosts(){
-  request("GET", "/posts?postId="+postId).success(function(data){
-    // setting the last posts id to postId
-    postId = data.latestpost
-    if(data.count > 0){
-      count = count + data.count
-    }
-    $('.new_post_count').text('You have '+count+' new post')
+  request("GET", "/posts").success(console.log("success")).success(function(data){
+    console.log("here")
     console.log(data, count,'second')
-  });
-  // $("<p>Johanna</p>").appendTo(".follow")
+    if(data != 0){
+    $('.new_post_count').text('You have new posts')
+    }
+  })
 }
 
 function findLastPostId(){
@@ -28,7 +25,7 @@ function findLastPostId(){
   //   // setting the last posts id to postId
   //   console.log(data, count,'fisrst')
   //   postId = data.latestpost
-  //   setInterval(findNewPosts, 6000);
+    setInterval(findNewPosts, 6000);
   // });
 }
 
