@@ -5,7 +5,7 @@
 
 }
 body{
-  background-color: #D1D1E0;
+  background-color: #f5f5f8;
 }
 
 .profile_sidebar{
@@ -145,7 +145,7 @@ body{
 
 
 .member_listing{
-  border: 1px solid black;
+  border: 0px solid black;
   width: 45%;
   margin:2%;
   height: 200px;
@@ -163,9 +163,10 @@ body{
 }
 
 .memlistimage_div{
-  width: 30%;
-  height: 70%;
+  width: 25%;
+  height: 60%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .member_listing_bio{

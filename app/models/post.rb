@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   has_many :votes
   has_one :repost, class_name: "Post"
 
+  default_scope :order => 'created_at DESC'
+
   validates :content,  obscenity: { sanitize: true, replacement: "woopsy" }
 
 
