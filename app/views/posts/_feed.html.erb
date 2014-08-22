@@ -8,7 +8,9 @@
   <% current_user_reposts = findReposts(current_user)%>
 
   <% current_user_and_following.each do |user| %>
-    <% @posts.each do |post_record| %>
+  <%@sortedposts = @posts.sort_by { |k| k["created_at"] }%>
+
+    <% @sortedposts.reverse.each do |post_record| %>
       <% if post_record.user_id == user.id%>
       <% post = includingRetweets(post_record, @original_post_ids)%>
       <% @user_score = user_score(user)%>

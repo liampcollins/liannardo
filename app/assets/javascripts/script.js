@@ -20,16 +20,11 @@ function findNewPosts(){
   })
 }
 
-function findLastPostId(){
-  // var findLastPost = request("GET", "/posts").success(function(data){
-  //   // setting the last posts id to postId
-  //   console.log(data, count,'fisrst')
-  //   postId = data.latestpost
+function checkForNewPosts(){
     setInterval(findNewPosts, 6000);
-  // });
 }
 
-findLastPostId()
+checkForNewPosts()
 
 function updateLikes(button, post){
   console.log("button")
