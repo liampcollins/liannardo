@@ -12,6 +12,10 @@ body{
   float: left;
   width: 40%;
   position: fixed;
+  text-align: center;
+  background-color: white;
+  padding-bottom: 40px;
+  border-radius: 5px;
 
 }
 
@@ -40,6 +44,12 @@ body{
   width: 40%;
   padding-bottom: 100px;
   min-width: 320px;
+  border-radius: 5px;
+}
+
+.member_listing{
+  background-color: white;
+  border-radius: 5px;
 }
  h1{
   padding: 20px;
@@ -140,6 +150,8 @@ body{
   margin:2%;
   height: 200px;
   float:left;
+  background-color: white;
+  text-align: center;
 }
 .member_listing_name{
   font-size: 30px;
