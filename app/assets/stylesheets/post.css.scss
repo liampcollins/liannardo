@@ -60,17 +60,23 @@
   width: 24%;
   height: 100%;
   vertical-align: top;
+  vertical-align: top;
 text-align: center;
 }
+
 .post_second_col{
   display: inline-block;
   width: 50%;
   height: 100%;
 }
+
+/*  border: 1px solid black;*/
+
 .post_third_col{
   display: inline-block;
   width: 24%;
   height: 100%;
+  border: 1px solid black;
 }
 
 .name_td {
@@ -201,12 +207,12 @@ text-align: center;
   background-color: white;
 }
 .hated_status {
-  background-color: red;
+  background-color: gray;
 }
 
 
 .liked_status {
-  background-color: green;
+  background-color: gray;
 }
 
 .following {
